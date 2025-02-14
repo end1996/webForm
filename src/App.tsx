@@ -1,6 +1,7 @@
 import Header from "./components/Header";
-import ImagePreview from "./components/Screens/previsualize/ImagePreview";
+import ImagePreview from "./components/Screens/imagePreview/ImagePreview";
 import Iconos from "./components/Screens/Formulario/Iconos";
+
 
 function App() {
   return <>
