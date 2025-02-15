@@ -1,0 +1,21 @@
+.botonEnmarcadoContainer {
+    display: flex;
+    width: 718px;
+    height: 28px;
+    margin-top: 1rem;
+    padding: 0 1rem;
+}
+
+.botonEnmarcado {
+    display: flex;
+    width: 359px;
+    height: auto;
+    justify-content: center;
+    border: 1px solid #212559;
+    background-color: #ffff;
+}
+
+.botonEnmarcado:hover {
+    background-color: #FB7B48;
+    color: #ffff;
+}

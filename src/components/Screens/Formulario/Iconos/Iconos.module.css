@@ -1,0 +1,34 @@
+.iconContainer {
+    display: flex;
+    width: 100%;  /* Ajusta el ancho al 100% del contenedor padre */
+    max-width: 768px;  /* Asegúrate de que esta sea la dimensión correcta según tu diseño de Figma */
+    height: 69px;  /* Asegúrate de que esta sea la dimensión correcta según tu diseño de Figma */
+    flex-direction: row;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: space-around;
+    box-sizing: border-box;
+    border: 1px solid #EBEFF2;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.iconText {
+    line-height: 15px;  /* Ajusta la altura de línea para centrar el texto verticalmente */
+    letter-spacing: 1px; /* Ajusta el espaciado entre letras */
+    margin-top: 5px; /* Añade un margen superior para separar el texto del icono */
+}
+
+.iconContainer__each:hover {
+    cursor: pointer;
+}
+
+.iconContainer__each {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  /* Centra el contenido horizontalmente */
+}

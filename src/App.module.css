@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 15px; /* Añade un padding para evitar que el contenido toque los bordes de la pantalla */
+}
+
+.column {
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.imagePreviewColumn {
+    flex: 0 0 60%;
+    max-width: 60%;
+    box-sizing: border-box;
+}
+
+.iconosColumn {
+    flex: 0 0 40%;
+    max-width: 40%;
+    box-sizing: border-box;
+}
+

@@ -1,13 +1,10 @@
 .card {
-    /* Estilos para la clase card */
     margin-left: 177px;
     margin-top: 30px;
     margin-bottom: 30px;
     width: 796px;
     height: 1040px;
     border: 30px solid #000;
-    border-radius: 4px;
-    padding: 10px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -15,7 +12,6 @@
 }
 
 .cardBody {
-    /* Estilos para la clase cardBody */
     padding: 0;
     display: flex;
     align-items: center;
@@ -23,10 +19,7 @@
 }
 
 .cardImg {
-    /* Estilos para la clase cardImg */
     width: 606px;
     height: 848px;
     object-fit: cover;
-    max-width: 100%;
-    height: auto;
 }
