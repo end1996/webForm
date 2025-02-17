@@ -1,0 +1,27 @@
+.textTitle {
+    font-size: 20px;
+    color: #44A0AA;
+    font-weight: 600;
+    line-height: 30px;
+    font-family: "Lora", serif;
+    margin-top: 20px;
+}
+
+.dimensionesContainer {
+    display: flex;
+    gap: 12px;
+}
+
+.orientationButton {
+    width: 128px;
+    height: 46px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.orientationButton:hover {
+    background-color: #FB7B48;
+    color: #FFFF;
+}
