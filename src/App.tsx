@@ -5,6 +5,7 @@ import BotonesEnmarcado from "./components/Screens/Formulario/BotonesEnmarcado";
 import SubirImagen from "./components/Screens/Formulario/SubirImagen";
 import Dimensiones from "./components/Screens/Formulario/Dimensiones";
 import Tamanios from "./components/Screens/Formulario/Tamanios";
+import TextInputContainer from "./components/Screens/Formulario/TextInputComentarios";
 import styles from './App.module.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <SubirImagen />
         <Dimensiones  />
         <Tamanios />
+        <TextInputContainer />
       </div>
     </div>
   </>

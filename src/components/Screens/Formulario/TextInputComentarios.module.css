@@ -1,0 +1,40 @@
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 252px;
+    width: 100%;
+    border: 1px solid #CFCFCF;
+}
+
+.textTitle {
+    font-size: 20px;
+    color: #44A0AA;
+    font-weight: 600;
+    line-height: 30px;
+    font-family: "Lora", serif;
+    margin-top: 20px;
+}
+
+.textInput {
+    height: 168px;
+    width: 95%;
+    display: flex;
+    text-align: center;
+    border-color: #CFCFCF;
+}
+
+.buttonContainer {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+
+.buttonSubmit {
+    background-color: #FB7B48;
+    height: 43px;
+    width: auto;
+    border-radius: 6px;
+    color: #FFFF;
+}
+
