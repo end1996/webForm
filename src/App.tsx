@@ -3,6 +3,7 @@ import ImagePreview from "./components/Screens/imagePreview/ImagePreview";
 import Iconos from "./components/Screens/Formulario/Iconos";
 import BotonesEnmarcado from "./components/Screens/Formulario/BotonesEnmarcado";
 import SubirImagen from "./components/Screens/Formulario/SubirImagen";
+import Dimensiones from "./components/Screens/Formulario/Dimensiones";
 import styles from './App.module.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Iconos />
         <BotonesEnmarcado />
         <SubirImagen />
+        <Dimensiones  />
       </div>
     </div>
   </>
