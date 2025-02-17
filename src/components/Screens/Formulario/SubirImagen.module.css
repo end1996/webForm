@@ -14,4 +14,59 @@
     width: 136px;
     border-radius: 6px;
     color: #FFFF;
+    cursor: pointer;
+    border: none;
+}
+
+.buttonUpload:hover {
+    background-color: #e66a3d;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.dropZone {
+    width: 100%;
+    height: 200px;
+    border: 2px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.fileInput {
+    display: none;
+}
+
+.uploadContainer {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 20px;
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
 }

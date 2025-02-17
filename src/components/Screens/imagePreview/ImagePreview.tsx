@@ -1,20 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './ImagePreview.module.css';
 import defaultImage from '../../../assets/arte.jpg'; // Corrige la ruta de la imagen por defecto
 
 const ImagePreview = () => {
-    const [image, setImage] = useState(defaultImage); // Usa la imagen importada como valor inicial
-
-    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                setImage(e.target?.result as string);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
+    const [image] = useState(defaultImage); // Usa la imagen importada como valor inicial
 
     return (
         <div>
@@ -25,12 +14,6 @@ const ImagePreview = () => {
                     </div>
                 </div>
             </div>
-            <input
-                type="file"
-                className={styles.fileInput}
-                id="fileInput"
-                onChange={handleImageChange}
-            />
         </div>
     );
 };
