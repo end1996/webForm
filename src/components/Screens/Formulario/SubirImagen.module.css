@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+.textTitle {
+    font-size: 20px;
+    color: #44A0AA;
+    font-weight: 600;
+    line-height: 30px;
+    font-family: "Lora", serif;
+}
+
+.uploadContainer {
+    margin-bottom: 100px;
+}
+
+.buttonUpload {
+    background-color: #FB7B48;
+    height: 43px;
+    width: 136px;
+    border-radius: 6px;
+    color: #FFFF;
+}
