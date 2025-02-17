@@ -10,6 +10,7 @@
 .dimensionesContainer {
     display: flex;
     gap: 12px;
+    padding-bottom: 20px;
 }
 
 .orientationButton {
