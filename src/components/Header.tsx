@@ -1,7 +1,7 @@
 function Header() {
     // Cambiar className por className
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className="navbar navbar-expand-lg bg-white">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
                     <img src="src/assets/arteIdeas.jpg" alt="ArteIdeas" width={134} height={51} />

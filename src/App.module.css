@@ -5,7 +5,6 @@
     align-items: flex-start;
     width: 100%;
     box-sizing: border-box;
-    padding: 0 15px; /* Añade un padding para evitar que el contenido toque los bordes de la pantalla */
 }
 
 .column {
@@ -17,9 +16,10 @@
     flex: 0 0 60%;
     max-width: 60%;
     box-sizing: border-box;
+    background-color: #fafafa;
 }
 
-.iconosColumn {
+.formColumn {
     flex: 0 0 40%;
     max-width: 40%;
     box-sizing: border-box;
