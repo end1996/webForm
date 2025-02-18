@@ -6,6 +6,7 @@ import SubirImagen from "./components/Screens/Formulario/SubirImagen";
 import Dimensiones from "./components/Screens/Formulario/Dimensiones";
 import Tamanios from "./components/Screens/Formulario/Tamanios";
 import TextInputContainer from "./components/Screens/Formulario/TextInputComentarios";
+import AgregarAlCarro from "./components/Screens/Formulario/AgregarAlCarro";
 import styles from './App.module.css';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Dimensiones  />
         <Tamanios />
         <TextInputContainer />
+        <AgregarAlCarro />
       </div>
     </div>
   </>
