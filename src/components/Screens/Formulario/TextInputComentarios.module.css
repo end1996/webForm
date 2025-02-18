@@ -13,7 +13,7 @@
     font-weight: 600;
     line-height: 30px;
     font-family: "Lora", serif;
-    margin-top: 20px;
+    font-weight: semibold;
 }
 
 .textInput {
@@ -22,9 +22,12 @@
     display: flex;
     text-align: center;
     border-color: #CFCFCF;
+    resize: none;
+    overflow: auto;
 }
 
 .buttonContainer {
+    margin-top: 10px;
     display: flex;
     width: 100%;
     justify-content: end;
