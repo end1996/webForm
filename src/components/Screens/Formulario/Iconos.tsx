@@ -13,7 +13,7 @@ function Iconos() {
         <label className={styles.iconText}>MARCO</label>
       </div>
       <div className={styles.iconContainer__each}>
-        <i className="bi bi-aspect-ratio fs-4"></i>
+        <i className="bi bi-aspect-ratio fs-5"></i>
         <label className={styles.iconText}>PASSEPARTOUT</label>
       </div>
     </div>

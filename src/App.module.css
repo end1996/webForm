@@ -5,6 +5,7 @@
     align-items: flex-start;
     width: 100%;
     box-sizing: border-box;
+    padding: 0;
 }
 
 .column {
@@ -24,5 +25,22 @@
     max-width: 40%;
     box-sizing: border-box;
     padding: 0 38px 0 38px;
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 1280px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .imagePreviewColumn,
+    .formColumn {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .formColumn {
+        padding: 0 20px;
+    }
 }
 
