@@ -1,8 +1,10 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
 .iconContainer {
     display: flex;
     width: 100%;  /* Ajusta el ancho al 100% del contenedor padre */
-    max-width: 768px;  /* Asegúrate de que esta sea la dimensión correcta según tu diseño de Figma */
-    height: 69px;  /* Asegúrate de que esta sea la dimensión correcta según tu diseño de Figma */
+    max-width: 768px;
+    height: 71px;  
     flex-direction: row;
     margin-top: 30px;
     align-items: center;
@@ -11,19 +13,14 @@
     border: 1px solid #EBEFF2;
 }
 
-.icon {
-    width: 24px;
-    height: 24px;
-}
-
 .iconText {
     line-height: 15px;  /* Ajusta la altura de línea para centrar el texto verticalmente */
     letter-spacing: 1px; /* Ajusta el espaciado entre letras */
-    margin-top: 5px; /* Añade un margen superior para separar el texto del icono */
 }
 
 .iconContainer__each:hover {
     cursor: pointer;
+    color: #FB7B48;
 }
 
 .iconContainer__each {
