@@ -14,6 +14,9 @@
     justify-content: center;
     border: 1px solid #212559;
     background-color: #ffff;
+    font-weight: bold;
+    font-size: 11.2px;
+    align-items: center;
 }
 
 .botonEnmarcado:hover {

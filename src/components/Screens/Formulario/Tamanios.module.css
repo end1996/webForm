@@ -7,27 +7,24 @@
     font-size: 20px;
     color: #44A0AA;
     font-weight: 600;
-    line-height: 30px;
     font-family: "Lora", serif;
-    margin-top: 20px;
-}
-
-.textSecondary {
-    text-align: center;
-    justify-content: center;
 }
 
 .tamanioSelectContainer {
     display: flex;
     width: 100%;
-    justify-content: left;
+    height: 40px;
+    gap: 10px;
     align-items: center;
-    border: 1px solid #0000;
+    align-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .tamanioSelect {
-    height: 21px;
     width: 68px;
+    border-radius: 10px;
+    text-align: center;
 }
 
 .gridDimensiones {

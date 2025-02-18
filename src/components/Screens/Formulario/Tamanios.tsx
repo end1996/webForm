@@ -4,12 +4,18 @@ function tamanios() {
     return (
         <div className={styles.tamaniosContainer}>
             <div className={styles.tamanioSelectContainer}>
-                <h2 className={styles.textTitle}>Tamaño</h2>
-                <select className={styles.tamanioSelect}>
-                    <option>cm</option>
-                    <option>mts</option>
-                </select>
-                <p className={styles.textSecondary}>(Alto x Ancho)</p>
+                <div>
+                    <h2 className={styles.textTitle}>Tamaño</h2>
+                </div>
+                <div>
+                    <select className={styles.tamanioSelect}>
+                        <option>cm</option>
+                        <option>mts</option>
+                    </select>
+                </div>
+                <div>
+                    <label className={styles.textSecondary}>(Alto x Ancho)</label>
+                </div>
             </div>
             <div className={styles.tamanioButtonsContainer}>
                 <button>Estándar</button>
