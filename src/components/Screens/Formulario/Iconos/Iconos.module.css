@@ -3,7 +3,7 @@
 .iconContainer {
     display: flex;
     width: 100%;  /* Ajusta el ancho al 100% del contenedor padre */
-    max-width: 768px;
+    max-width: 100%;  /* Ajusta el ancho máximo al 100% del contenedor padre */
     height: 71px;  
     flex-direction: row;
     align-items: center;

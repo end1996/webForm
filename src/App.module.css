@@ -37,10 +37,12 @@
     .formColumn {
         flex: 0 0 100%;
         max-width: 100%;
+        width: 100%;
     }
 
     .formColumn {
         padding: 0 20px;
+        width: 100%;
     }
 }
 
