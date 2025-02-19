@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import ImagePreview from "./components/Screens/imagePreview/ImagePreview";
-import Iconos from "./components/Screens/Formulario/Iconos";
+import Iconos from "./components/Screens/Formulario/Iconos/Iconos";
 import BotonesEnmarcado from "./components/Screens/Formulario/BotonesEnmarcado";
 import SubirImagen from "./components/Screens/Formulario/SubirImagen";
 import Dimensiones from "./components/Screens/Formulario/Dimensiones";

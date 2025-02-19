@@ -2,29 +2,20 @@
 
 .iconContainer {
     display: flex;
-    width: 100%;  /* Ajusta el ancho al 100% del contenedor padre */
-    max-width: 100%;  /* Ajusta el ancho máximo al 100% del contenedor padre */
-    height: 71px;  
-    flex-direction: row;
-    align-items: center;
     justify-content: space-around;
-    box-sizing: border-box;
-    border: 1px solid #EBEFF2;
-}
-
-.iconText {
-    line-height: 15px;  /* Ajusta la altura de línea para centrar el texto verticalmente */
-    letter-spacing: 1px; /* Ajusta el espaciado entre letras */
-}
-
-.iconContainer__each:hover {
-    cursor: pointer;
-    color: #FB7B48;
-}
-
-.iconContainer__each {
+  }
+  
+  .iconContainer__each {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;  /* Centra el contenido horizontalmente */
-}
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .iconContainer__each.selected i {
+    color: #FB7B48; /* Color para el icono seleccionado */
+  }
+  
+  .iconText {
+    margin-top: 5px;
+  }

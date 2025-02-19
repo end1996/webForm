@@ -19,7 +19,7 @@
     align-items: center;
 }
 
-.botonEnmarcado:hover {
+.botonEnmarcado.selected {
     background-color: #FB7B48;
     color: #ffff;
 }

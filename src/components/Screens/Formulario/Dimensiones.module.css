@@ -23,7 +23,7 @@
     justify-content: space-evenly;
 }
 
-.orientationButton:hover {
-    background-color: #FB7B48;
-    color: #FFFF;
-}
+.orientationButton.selected {
+    background-color: #FB7B48; /* Color para el botón seleccionado */
+    color: #fff;
+  }
