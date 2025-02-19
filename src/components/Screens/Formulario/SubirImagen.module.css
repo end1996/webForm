@@ -6,6 +6,14 @@
     font-weight: 600;
     line-height: 30px;
     font-family: "Lora", serif;
+    text-align: center;
+}
+
+.uploadContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .buttonUpload {

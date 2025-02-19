@@ -24,13 +24,14 @@ function Iconos() {
         <i className="bi bi-file-person fs-4"></i>
         <label className={styles.iconText}>MARCO</label>
       </div>
+      {/* Oculto por requerimiento
       <div
         className={`${styles.iconContainer__each} ${selectedIcon === 'aspectRatio' ? styles.selected : ''}`}
         onClick={() => handleIconClick('aspectRatio')}
       >
         <i className="bi bi-aspect-ratio fs-5"></i>
         <label className={styles.iconText}>PASSEPARTOUT</label>
-      </div>
+      </div>*/}
     </div>
   );
 }

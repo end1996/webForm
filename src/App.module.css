@@ -17,10 +17,11 @@
     flex: 0 0 60%;
     max-width: 60%;
     box-sizing: border-box;
-    background-color: #fafafa;
+    background-color: #E2E2E2;
 }
 
 .formColumn {
+    background-color: #fafafa;
     flex: 0 0 40%;
     max-width: 40%;
     box-sizing: border-box;

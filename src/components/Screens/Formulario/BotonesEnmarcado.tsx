@@ -11,10 +11,10 @@ function BotonesEnmarcado() {
     return (
         <div className={styles.botonEnmarcadoContainer}>
             <button
-                className={`${styles.botonEnmarcado} ${selectedButton === 'soloEnmarcacion' ? styles.selected : ''}`}
-                onClick={() => handleButtonClick('soloEnmarcacion')}
+                className={`${styles.botonEnmarcado} ${selectedButton === 'soloImpresion' ? styles.selected : ''}`}
+                onClick={() => handleButtonClick('soloImpresion')}
             >
-                SÓLO ENMARCACIÓN
+                SÓLO IMPRESIÓN
             </button>
             <button
                 className={`${styles.botonEnmarcado} ${selectedButton === 'enmarcacionImpresion' ? styles.selected : ''}`}

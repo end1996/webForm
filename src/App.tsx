@@ -17,9 +17,9 @@ function App() {
         <ImagePreview />
       </div>
       <div className={`${styles.column} ${styles.formColumn}`}>
+        <SubirImagen />
         <Iconos />
         <BotonesEnmarcado />
-        <SubirImagen />
         <Dimensiones  />
         <Tamanios />
         <TextInputContainer />
