@@ -1,78 +1,50 @@
-import React, { useState, useRef } from 'react';
-import Modal from 'react-modal';
+import React, { useState } from 'react';
 import styles from './SubirImagen.module.css';
 
-interface SubirImagenProps {
-    onImageChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+function SubirImagen() {
+    const [imageSrc, setImageSrc] = useState<string | null>(null);
 
-const SubirImagen: React.FC<SubirImagenProps> = ({ onImageChange }) => {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const fileInputRef = useRef<HTMLInputElement>(null);
-
-    const handleButtonClick = () => {
-        setModalIsOpen(true);
-    };
-
-    const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
-        event.preventDefault();
-        const file = event.dataTransfer.files[0];
+    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = () => {
-                const changeEvent = {
-                    target: { files: [file] },
-                } as unknown as React.ChangeEvent<HTMLInputElement>;
-                onImageChange(changeEvent);
-                setModalIsOpen(false); // Cierra el modal después de arrastrar y soltar la imagen
+            reader.onloadend = () => {
+                setImageSrc(reader.result as string);
             };
             reader.readAsDataURL(file);
         }
     };
 
-    const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
-        event.preventDefault();
+    const triggerFileInput = () => {
+        const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+        fileInput.click();
     };
 
     return (
-        <div>
-            <button className={styles.buttonUpload} onClick={handleButtonClick}>
-                Subir imágen
-            </button>
-            <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={() => setModalIsOpen(false)}
-                contentLabel="Subir Imagen"
-                className={styles.modal}
-                overlayClassName={styles.overlay}
-            >
-                <button className={styles.closeButton} onClick={() => setModalIsOpen(false)}>
-                    &times;
-                </button>
-                <h2>Subir Imagen</h2>
-                <div
-                    className={styles.dropZone}
-                    onDrop={handleDrop}
-                    onDragOver={handleDragOver}
-                >
-                    Arrastra tu imagen aquí
-                </div>
-                <p>o</p>
-                <button className={styles.buttonUpload} onClick={() => fileInputRef.current?.click()}>
-                    Selecciona imagen JPG, PNG desde tu dispositivo
-                </button>
+        <div className='mt-3'>
+            <p className={styles.textTitle}>Imágen para imprimir</p>
+            <div className={styles.uploadContainer}>
                 <input
                     type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
                     className={styles.fileInput}
-                    ref={fileInputRef}
-                    onChange={(event) => {
-                        onImageChange(event);
-                        setModalIsOpen(false); // Cierra el modal después de seleccionar la imagen
-                    }}
+                    id="fileInput"
+                    style={{ display: 'none' }}
                 />
-            </Modal>
+                <button className={styles.buttonUpload} onClick={triggerFileInput}>
+                    Subir imágen
+                </button>
+                {imageSrc && (
+                    <img
+                        className={styles.cardImg}
+                        src={imageSrc}
+                        alt="Imagen seleccionada"
+                    />
+                )}
+            </div>
         </div>
     );
-};
+}
 
 export default SubirImagen;
