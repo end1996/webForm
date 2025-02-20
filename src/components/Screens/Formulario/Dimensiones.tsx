@@ -13,7 +13,6 @@ function Dimensiones() {
   return (
     <>
       <div>
-        <p className={styles.textTitle}>Dimensiones</p>
         <p className={styles.textTitle}>Orientación</p>
       </div>
       <div className={styles.dimensionesContainer}>

@@ -12,8 +12,9 @@
     cursor: pointer;
   }
   
-  .iconContainer__each.selected i {
+  .iconContainer__each.selected {
     color: #FB7B48; /* Color para el icono seleccionado */
+    font-weight: 600;
   }
   
   .iconText {

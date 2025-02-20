@@ -87,26 +87,34 @@ function Tamanios() {
             </div>
             {selectedButton === 'personalizado' ? (
                 <div className={styles.customSizeContainer}>
-                    <label className={styles.customLabel}>
-                        Ancho:
-                        <input
-                            type="text"
-                            value={customWidth}
-                            onChange={handleWidthChange}
-                            className={styles.customInput}
-                        />
+                    <div className={styles.customInputRow}>
+                        <label className={styles.customLabel}>
+                            Ancho:
+                            <input
+                                type="number"
+                                min={10}
+                                max={60}
+                                value={customWidth}
+                                onChange={handleWidthChange}
+                                className={styles.customInput}
+                            />
+                        </label>
                         {widthError && <span className={styles.errorText}>{widthError}</span>}
-                    </label>
-                    <label className={styles.customLabel}>
-                        Alto:
-                        <input
-                            type="text"
-                            value={customHeight}
-                            onChange={handleHeightChange}
-                            className={styles.customInput}
-                        />
+                    </div>
+                    <div className={styles.customInputRow}>
+                        <label className={styles.customLabel}>
+                            Alto:
+                            <input
+                                type="number"
+                                min={15}
+                                max={100}
+                                value={customHeight}
+                                onChange={handleHeightChange}
+                                className={styles.customInput}
+                            />
+                        </label>
                         {heightError && <span className={styles.errorText}>{heightError}</span>}
-                    </label>
+                    </div>
                 </div>
             ) : (
                 <div className={styles.gridDimensiones}>
