@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './BotonesEnmarcado.module.css';
 
 function BotonesEnmarcado() {
-    const [selectedButton, setSelectedButton] = useState<string | null>(null);
+    const [selectedButton, setSelectedButton] = useState<string | null>('enmarcacionImpresion'); // 'enmarcacionImpresion' por defecto
 
     const handleButtonClick = (buttonName: string) => {
         setSelectedButton(buttonName);

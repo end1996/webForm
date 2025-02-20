@@ -1,12 +1,12 @@
 import Header from "./components/Header";
 import ImagePreview from "./components/Screens/imagePreview/ImagePreview";
 import Iconos from "./components/Screens/Formulario/Iconos/Iconos";
-import BotonesEnmarcado from "./components/Screens/Formulario/BotonesEnmarcado";
-import SubirImagen from "./components/Screens/Formulario/SubirImagen";
+import BotonesEnmarcado from "./components/Screens/Formulario/BotonesEnmarcado/BotonesEnmarcado";
+import SubirImagen from "./components/Screens/Formulario/SubirImagen/SubirImagen";
 /*import Dimensiones from "./components/Screens/Formulario/Dimensiones";*/
-import Tamanios from "./components/Screens/Formulario/Tamanios";
-import TextInputContainer from "./components/Screens/Formulario/TextInputComentarios";
-import AgregarAlCarro from "./components/Screens/Formulario/AgregarAlCarro";
+import Tamanios from "./components/Screens/Formulario/TamanioGrid/Tamanios";
+import TextInputContainer from "./components/Screens/Formulario/TextInput/TextInputComentarios";
+import AgregarAlCarro from "./components/Screens/Formulario/AgregarAlCarro/AgregarAlCarro";
 import styles from './App.module.css';
 
 function App() {
