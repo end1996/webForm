@@ -2,17 +2,23 @@ import { Card } from 'react-bootstrap';
 import styles from './MarcosView.module.css';
 
 const MarcosView = () => {
-    // Crear un arrayt con 20 elementos de texto 'Card 1', 'Card 2', 'Card 3', etc.
-    const cards = Array.from({ length: 20 }, (_, index) => `Card ${index + 1}`);
+    const cards = Array.from({ length: 12 }, (_, index) => `Card ${index + 1}`);
 
     return (
+      <>
+        <h2 className={styles.textTitle}>Marco</h2>
+        <p>Selecciona un marco para tu imagen</p>
         <div className={styles.marcosViewContainer}>
-            {cards.map((card, index) => (
-                <Card key={index} className={styles.card}>
-                    <Card.Body>{card}</Card.Body>
-                </Card>
-            ))}
+            {cards.map((card, index) => {
+                return (
+                    <Card key={index} className={styles.card}>
+                        <Card.Img variant="top" src={`src/assets/marcos/marco-${index + 1}.jpg`} height={150}/>
+                        <Card.Body>{card}</Card.Body>
+                    </Card>
+                );
+            })}
         </div>
+      </>
     );
 };
 
