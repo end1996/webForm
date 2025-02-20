@@ -18,7 +18,7 @@
     border: 1px solid #D9D9D9;
 }
 
-.botonEnmarcado.selected {
+.botonEnmarcado.selected, .botonEnmarcado:hover {
     background-color: #FB7B48;
     color: #ffff;
 }

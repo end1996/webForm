@@ -33,9 +33,9 @@
     gap: 10px;
 }
 
-.tamanioSelect.selected {
+.tamanioSelect.selected, .tamanioSelect:hover {
     background-color: #FB7B48;
-    color: #FFFF;
+    color: #FFFFFF;
 }
 
 .tamanioButton {
@@ -45,7 +45,7 @@
     border: 1px solid #D9D9D9;
 }
 
-.tamanioButton.selected {
+.tamanioButton.selected, .tamanioButton:hover {
     background-color: #FB7B48;
     color: #FFFF;
 }
@@ -69,8 +69,7 @@
     border-radius: 10px;
 }
 
-.gridDimensiones button:hover,
-.gridDimensiones button:active {
+.gridButton.selected, .gridButton:hover {
     background-color: #FB7B48;
     color: #FFFF;
 }

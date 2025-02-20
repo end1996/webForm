@@ -7,6 +7,7 @@ function Tamanios() {
     const [customHeight, setCustomHeight] = useState<string>('');
     const [widthError, setWidthError] = useState<string>('');
     const [heightError, setHeightError] = useState<string>('');
+    const [selectedGridButton, setSelectedGridButton] = useState<string>('');
 
     const handleButtonClick = (buttonName: string) => {
         setSelectedButton(buttonName);
@@ -38,8 +39,12 @@ function Tamanios() {
         }
     };
 
+    const handleGridElement = (gridButtonName: string) => {
+        setSelectedGridButton(gridButtonName);
+    }
+
     const dimensionesEstandar = [
-        '10 X 15', '13 X 18', '15 X 21', '20 X 25', '20 X 30', '20 X 40', '20 X 50', '30 X 40',
+        '10 X 15', '13 X 18', '15 X 21', '20 X 25', '20 X 30', '20 X 40', '20 X 50', '20 X 60',
         '25 X 30', '25 X 38', '25 X 40', '25 X 50', '25 X 60', '30 X 40', '30 X 45', '30 X 50', '30 X 60',
     ];
 
@@ -56,18 +61,6 @@ function Tamanios() {
                     <h2 className={styles.textTitle}>Tamaño</h2>
                     <span>(Ancho x Alto)</span>
                 </div>
-                {/*No necesario 
-                <div>
-                    <select className={styles.tamanioSelect}>
-                        <option>cm</option>
-                        <option>mts</option>
-                    </select>
-                </div>
-                
-                <div>
-                    <label className={styles.textSecondary}>(Ancho x Alto)</label>
-                </div>
-                */ }
             </div>
             <div className={styles.tamanioButtonsContainer}>
                 <button
@@ -122,8 +115,12 @@ function Tamanios() {
                 </div>
             ) : (
                 <div className={styles.gridDimensiones}>
-                    {dimensiones.map((dimension, index) => (
-                        <button key={index} className={styles.dimensionButton}>{dimension}</button>
+                    {dimensiones.map((dimension) => (
+                        <button key={dimension} className={`${styles.gridButton} ${selectedGridButton === dimension ? styles.selected : ''}`}
+                            onClick={() => handleGridElement(dimension)}
+                        >
+                            {dimension}
+                        </button>
                     ))}
                 </div>
             )}
