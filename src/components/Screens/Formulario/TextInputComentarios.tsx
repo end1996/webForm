@@ -6,7 +6,7 @@ function TextInputContainer() {
     return (
         <>
             <div className={styles.inputContainer}>
-                <h2 className={styles.textTitle}>COMENTARIOS ADICIONALES</h2>
+                <h2 className={styles.textTitle}>Comentarios adicionales</h2>
                 <textarea className={styles.textInput}  placeholder="Escribe aquí tus comentarios..."></textarea>
             </div>
             <div className={styles.buttonContainer}>

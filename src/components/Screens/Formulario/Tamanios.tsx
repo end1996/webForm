@@ -52,18 +52,22 @@ function Tamanios() {
     return (
         <div className={styles.tamaniosContainer}>
             <div className={styles.tamanioSelectContainer}>
-                <div>
+                <div className={styles.tamanioSelectTitle}>
                     <h2 className={styles.textTitle}>Tamaño</h2>
+                    <span>(Ancho x Alto)</span>
                 </div>
+                {/*No necesario 
                 <div>
                     <select className={styles.tamanioSelect}>
                         <option>cm</option>
                         <option>mts</option>
                     </select>
                 </div>
+                
                 <div>
-                    <label className={styles.textSecondary}>(Alto x Ancho)</label>
+                    <label className={styles.textSecondary}>(Ancho x Alto)</label>
                 </div>
+                */ }
             </div>
             <div className={styles.tamanioButtonsContainer}>
                 <button

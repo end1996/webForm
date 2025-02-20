@@ -28,6 +28,11 @@
     text-align: center;
 }
 
+.tamanioSelectTitle {
+    display: flex;
+    gap: 10px;
+}
+
 .tamanioSelect.selected {
     background-color: #FB7B48;
     color: #FFFF;
