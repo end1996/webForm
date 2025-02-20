@@ -1,0 +1,13 @@
+.marcosViewContainer {
+    padding: 20px;
+  }
+  
+  .backButton {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #FB7B48;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }

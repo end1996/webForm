@@ -1,37 +1,26 @@
-import { useState } from 'react';
 import styles from './Iconos.module.css';
 
-function Iconos() {
-  const [selectedIcon, setSelectedIcon] = useState<string | null>('image');
+interface IconosProps {
+  onIconClick: (view: string) => void;
+}
 
-  const handleIconClick = (iconName: string) => {
-    setSelectedIcon(iconName);
-  };
-
+const Iconos: React.FC<IconosProps> = ({ onIconClick }) => {
   return (
     <div className={styles.iconContainer}>
       <div
-        className={`${styles.iconContainer__each} ${selectedIcon === 'image' ? styles.selected : ''}`}
-        onClick={() => handleIconClick('image')}
+        className={styles.iconContainer__each}
+        onClick={() => onIconClick('main')}
       >
-        <i className="bi bi-card-image fs-3"></i>
-        <label className={styles.iconText}>Imágen</label>
+        <i className="bi bi-card-image fs-4"></i>
+        <label className={styles.iconText}>IMAGEN</label>
       </div>
       <div
-        className={`${styles.iconContainer__each} ${selectedIcon === 'person' ? styles.selected : ''}`}
-        onClick={() => handleIconClick('person')}
+        className={styles.iconContainer__each}
+        onClick={() => onIconClick('marcos')}
       >
-        <i className="bi bi-file-person fs-3"></i>
-        <label className={styles.iconText}>Marco</label>
+        <i className="bi bi-file-person fs-4"></i>
+        <label className={styles.iconText}>MARCO</label>
       </div>
-      {/* Oculto por requerimiento
-      <div
-        className={`${styles.iconContainer__each} ${selectedIcon === 'aspectRatio' ? styles.selected : ''}`}
-        onClick={() => handleIconClick('aspectRatio')}
-      >
-        <i className="bi bi-aspect-ratio fs-5"></i>
-        <label className={styles.iconText}>PASSEPARTOUT</label>
-      </div>*/}
     </div>
   );
 }
