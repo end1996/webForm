@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import styles from './ImagePreview.module.css';
+// Importa la imagen desde la carpeta assets
+import defaultImage from '../../../assets/arte.jpg';
 
 const ImagePreview: React.FC = () => {
-    const [imageSrc, setImageSrc] = useState<string | null>(null);
+    // Usa la imagen importada como valor inicial
+    const [imageSrc, setImageSrc] = useState<string | null>(defaultImage);
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -33,11 +36,6 @@ const ImagePreview: React.FC = () => {
                     />
                 )}
             </div>
-            {!imageSrc && (
-                <label htmlFor="fileInput" className={styles.uploadButton}>
-                    Subir Imagen
-                </label>
-            )}
         </div>
     );
 }

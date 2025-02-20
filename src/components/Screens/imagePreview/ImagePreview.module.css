@@ -1,10 +1,11 @@
 .card {
-    margin-left: 177px;
-    margin-right: 177px; /* Asegúrate de que el margen derecho esté especificado */
+    margin-left: 50px;
     margin-top: 30px;
     margin-bottom: 30px;
-    width: calc(100% - 354px); /* Ajusta el ancho para tener en cuenta los márgenes */
-    height: calc(100vh - 137px); /* Ajusta la altura según el contenido */
+    width: auto;
+    height: auto;
+    max-width: 80%;
+    max-height: 100%;
     border: 30px solid #000;
     box-sizing: border-box;
     display: flex;
@@ -13,9 +14,11 @@
     overflow: hidden;
     border-radius: 8px;
     animation: fadeIn 1s ease-in-out;
+    padding: 20px;
 }
+
 @keyframes fadeIn {
-    0% {
+    from {
         opacity: 0;
     }
     to {
@@ -32,9 +35,12 @@
 }
 
 .cardImg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    width: auto;
+    height: auto;
+    margin: 10px;
 }
 
 .cardImg img {
@@ -45,40 +51,4 @@
 
 .fileInput {
     display: none;
-}
-
-.uploadButton {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    animation: scaleUp 0.5s ease-in-out;
-}
-
-.uploadButton:hover {
-    background-color: #0056b3;
-}
-
-@keyframes scaleUp {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(1.1);
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .card {
-        margin-left: 20px;
-        margin-right: 20px; /* Asegúrate de que el margen derecho esté especificado */
-        padding: 0;
-        justify-content: center;
-        align-items: center;
-        width: calc(100% - 40px); /* Ajusta el ancho para tener en cuenta los márgenes */
-        height: auto; /* Ajusta la altura según el contenido */
-    }
 }
