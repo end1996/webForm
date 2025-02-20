@@ -38,7 +38,10 @@ function App() {
             </>
           )}
           {activeView === 'marcos' && (
-            <MarcosView />
+            <>
+              <MarcosView />
+              <AgregarAlCarro />
+            </>
           )}
         </div>
       </div>
