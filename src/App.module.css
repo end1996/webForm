@@ -26,6 +26,7 @@
     max-width: 40%;
     box-sizing: border-box;
     padding: 0 38px 0 38px;
+    height: calc(100vh - 77px);
 }
 
 /* Media query para pantallas más pequeñas */

@@ -3,8 +3,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    padding: 20px 0; /* Ajusta el padding superior e inferior */
-    margin-top: auto;
+    padding: 10px 0; /* Ajusta el padding superior e inferior */
     box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
 }
 

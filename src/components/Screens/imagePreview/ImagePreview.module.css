@@ -4,7 +4,7 @@
     margin-top: 30px;
     margin-bottom: 30px;
     width: calc(100% - 354px); /* Ajusta el ancho para tener en cuenta los márgenes */
-    height: 1040px;
+    height: calc(100vh - 137px); /* Ajusta la altura según el contenido */
     border: 30px solid #000;
     box-sizing: border-box;
     display: flex;

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 252px;
+    height: 180px;
     width: 100%;
     border: 1px solid #CFCFCF;
 }
@@ -11,14 +11,13 @@
     font-size: 20px;
     color: #44A0AA;
     font-weight: 600;
-    line-height: 30px;
     font-family: "Lora", serif;
     font-weight: semibold;
     text-align: center;
 }
 
 .textInput {
-    height: 168px;
+    height: calc(100% - 50px);
     width: 95%;
     display: flex;
     text-align: center;
