@@ -3,6 +3,7 @@
 .iconContainer {
     display: flex;
     justify-content: space-around;
+    border: 1px solid #CFCFCF;
   }
   
   .iconContainer__each {
