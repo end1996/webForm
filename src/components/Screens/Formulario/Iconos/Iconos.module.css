@@ -13,7 +13,7 @@
     cursor: pointer;
   }
   
-  .iconContainer__each.selected, .iconContainer__each:hover {
+  .iconContainer__each.selected {
     color: #FB7B48; /* Color para el icono seleccionado */
     font-weight: 600;
   }
