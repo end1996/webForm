@@ -4,17 +4,30 @@ import styles from './MarcosView.module.css';
 
 const MarcosView = () => {
     const cards = Array.from({ length: 12 }, (_, index) => `Card ${index + 1}`);
+    const marcoSize = ['1.5 cm', '2 cm', '3 cm', '4 cm'];
 
     const [selectedMarco, setSelectedMarco] = useState<string>('');
+    const [selectedSize, setSelectedSize] = useState<string>('')
 
     const handleMarcoChange = (marcoName: string) => {
         setSelectedMarco(marcoName)
     }
 
+    const handleMarcoSize = (sizeValue : string) => {
+        setSelectedSize(sizeValue)
+    }
+
     return (
         <>
             <h2 className={styles.textTitle}>Marco</h2>
-            <span className={styles.textSecondary}>Selecciona un marco para tu imagen</span>
+            {/*<span className={styles.textSecondary}>Selecciona un marco para tu imagen</span>*/}
+            <div className={styles.buttonMarcoSizeContainer}>
+                { marcoSize.map( (size) => (
+                    <button className={`${styles.buttonMarcoSize} ${selectedSize === size ? styles.selected : ''}`}
+                    onClick={() => handleMarcoSize(size)}
+                    >{size}</button>
+                ))}
+            </div>
             <div className={styles.marcosViewContainer}>
                 {cards.map((card, index) => {
                     return (

@@ -17,8 +17,21 @@
   margin-bottom: 0;
 }
 
-.textSecondary {
-  margin: 0;
+.buttonMarcoSizeContainer {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 5px;
+}
+
+.buttonMarcoSize {
+  border: 1px solid #D9D9D9;
+  background-color: #FFFF;
+  border-radius: 10px;
+}
+
+.buttonMarcoSize.selected, .buttonMarcoSize:hover {
+  background-color: #FB7B48;
+  color: #ffff;
 }
 
 .card {
@@ -26,7 +39,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.card :hover {
+.card:hover {
   cursor: pointer;
 }
 
