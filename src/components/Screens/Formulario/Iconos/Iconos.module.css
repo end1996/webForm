@@ -17,3 +17,9 @@
     color: #FB7B48; /* Color para el icono seleccionado */
     font-weight: 600;
   }
+
+  @media (max-width: 1280px) {
+    .iconContainer {
+      border: none;
+    }
+  }

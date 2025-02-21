@@ -5,7 +5,7 @@
     width: none;
     height: none;
     max-width: 800px;
-    max-height: 800px;
+    max-height: 700px;
     border: 30px solid #000;
     box-sizing: border-box;
     display: flex;
@@ -50,4 +50,10 @@
 
 .fileInput {
     display: none;
+}
+
+@media (max-width: 1280px ){
+    .card {
+        margin: 20px;
+    }
 }
