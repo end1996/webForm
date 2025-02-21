@@ -13,24 +13,29 @@ import MarcosView from "./components/Screens/Formulario/Iconos/Marco/MarcosView"
 
 function App() {
   const [activeView, setActiveView] = useState<string>('main');
+  const [selectedButton, setSelectedButton] = useState<string>('enmarcacionImpresion'); // 'enmarcacionImpresion' por defecto
 
   const handleIconClick = (view: string) => {
     setActiveView(view);
   };
+
+  const handleButtonClick = (buttonName: string) => {
+    setSelectedButton(buttonName);
+};
 
   return (
     <>
       <Header />
       <div className={styles.container}>
         <div className={`${styles.column} ${styles.imagePreviewColumn}`}>
-          <ImagePreview />
+          <ImagePreview selectedButton={selectedButton}/>
         </div>
         <div className={`${styles.column} ${styles.formColumn}`}>
           <Iconos onIconClick={handleIconClick} />
           {activeView === 'main' && (
             <>
               <SubirImagen />
-              <BotonesEnmarcado />
+              <BotonesEnmarcado selectedButton={selectedButton} onButtonClick={handleButtonClick} />
               {/*<Dimensiones  />*/}
               <Tamanios />
               <TextInputContainer />

@@ -1,24 +1,22 @@
-import { useState } from 'react';
 import styles from './BotonesEnmarcado.module.css';
 
-function BotonesEnmarcado() {
-    const [selectedButton, setSelectedButton] = useState<string | null>('enmarcacionImpresion'); // 'enmarcacionImpresion' por defecto
+interface BotonesEnmarcadoProps {
+    selectedButton: string;
+    onButtonClick: (buttonName: string) => void;
+}
 
-    const handleButtonClick = (buttonName: string) => {
-        setSelectedButton(buttonName);
-    };
-
+function BotonesEnmarcado({selectedButton, onButtonClick }: BotonesEnmarcadoProps) {
     return (
         <div className={styles.botonEnmarcadoContainer}>
             <button
                 className={`${styles.botonEnmarcado} ${selectedButton === 'soloImpresion' ? styles.selected : ''}`}
-                onClick={() => handleButtonClick('soloImpresion')}
+                onClick={() => onButtonClick('soloImpresion')}
             >
                 Sólo Impresión
             </button>
             <button
                 className={`${styles.botonEnmarcado} ${selectedButton === 'enmarcacionImpresion' ? styles.selected : ''}`}
-                onClick={() => handleButtonClick('enmarcacionImpresion')}
+                onClick={() => onButtonClick('enmarcacionImpresion')}
             >
                 Enmarcación + Impresión
             </button>

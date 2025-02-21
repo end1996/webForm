@@ -5,7 +5,7 @@
 }
 
 .card {
-    border: 30px solid #000;
+    border: 30px solid #000; /* Estilo del borde por defecto */
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -15,6 +15,10 @@
     border-radius: 8px;
     animation: fadeIn 1s ease-in-out;
 }
+
+.noBorder {
+    border: none; /* Estilo sin borde */
+ }
 
 @keyframes fadeIn {
     from {
@@ -39,13 +43,8 @@
     object-fit: contain;
     display: flex;
     margin: 10px;
+    border: 1px solid #00000034;
 }
-
-/*.cardImg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}*/
 
 .fileInput {
     display: none;

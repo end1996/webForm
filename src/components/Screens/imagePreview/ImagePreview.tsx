@@ -3,7 +3,11 @@ import styles from './ImagePreview.module.css';
 // Importa la imagen desde la carpeta assets
 import defaultImage from '../../../assets/arte.jpg';
 
-const ImagePreview: React.FC = () => {
+interface ImagePreviewProps {
+    selectedButton: string;
+}
+
+const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton }) => {
     // Usa la imagen importada como valor inicial
     const [imageSrc, setImageSrc] = useState<string | null>(defaultImage);
 
@@ -20,7 +24,7 @@ const ImagePreview: React.FC = () => {
 
     return (
         <div className={styles.cardContainer}>
-            <div className={styles.card}>
+            <div className={`${styles.card} ${selectedButton === 'soloImpresion' ? styles.noBorder : ''}`}>
                 <div className={styles.cardBody}>
                     <input
                         type="file"
