@@ -26,6 +26,15 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.card :hover {
+  cursor: pointer;
+}
+
+.card.selected {
+  background-color: #FB7B48;
+  color: #ffff;
+}
+
 .cardBody {
   text-align: center;
 }
