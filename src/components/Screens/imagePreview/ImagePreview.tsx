@@ -5,9 +5,10 @@ import defaultImage from '../../../assets/arte.jpg';
 
 interface ImagePreviewProps {
     selectedButton: string;
+    selectedMarco: string;
 }
 
-const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton }) => {
+const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMarco }) => {
     // Usa la imagen importada como valor inicial
     const [imageSrc, setImageSrc] = useState<string | null>(defaultImage);
 
@@ -35,7 +36,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton }) => {
                     />
                     {imageSrc && (
                         <img
-                            className={styles.cardImg}
+                            className={`${styles.cardImg} ${selectedMarco ? `${styles.marco} ${styles[`marco${selectedMarco.replace(' ', '')}`]}` : ''}`}
                             src={imageSrc}
                             alt="Imagen seleccionada"
                         />

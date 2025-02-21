@@ -14,6 +14,7 @@ import MarcosView from "./components/Screens/Formulario/Iconos/Marco/MarcosView"
 function App() {
   const [activeView, setActiveView] = useState<string>('main');
   const [selectedButton, setSelectedButton] = useState<string>('enmarcacionImpresion'); // 'enmarcacionImpresion' por defecto
+  const [selectedMarco, setSelectedMarco] = useState<string>('');
 
   const handleIconClick = (view: string) => {
     setActiveView(view);
@@ -21,14 +22,19 @@ function App() {
 
   const handleButtonClick = (buttonName: string) => {
     setSelectedButton(buttonName);
-};
+  };
+
+   // Manejar el cambio de marco seleccionado
+   const handleMarcoChange = (marcoName: string) => {
+    setSelectedMarco(marcoName)
+}
 
   return (
     <>
       <Header />
       <div className={styles.container}>
         <div className={`${styles.column} ${styles.imagePreviewColumn}`}>
-          <ImagePreview selectedButton={selectedButton}/>
+          <ImagePreview selectedButton={selectedButton} selectedMarco={selectedMarco} />
         </div>
         <div className={`${styles.column} ${styles.formColumn}`}>
           <Iconos onIconClick={handleIconClick} />
@@ -44,7 +50,7 @@ function App() {
           )}
           {activeView === 'marcos' && (
             <>
-              <MarcosView />
+              <MarcosView selectedMarco={selectedMarco} onMarcoClick={handleMarcoChange} />
               <AgregarAlCarro />
             </>
           )}

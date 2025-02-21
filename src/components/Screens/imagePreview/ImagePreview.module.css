@@ -5,7 +5,7 @@
 }
 
 .card {
-    border: 30px solid #000; /* Estilo del borde por defecto */
+    /*border: 30px solid #000; /* Estilo del borde por defecto */
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -18,7 +18,7 @@
 
 .noBorder {
     border: none; /* Estilo sin borde */
- }
+}
 
 @keyframes fadeIn {
     from {
@@ -43,7 +43,7 @@
     object-fit: contain;
     display: flex;
     margin: 10px;
-    border: 1px solid #00000034;
+    border: 1px solid transparent; /*Margen claro solo para remarcar imagen*/
 }
 
 .fileInput {
@@ -55,3 +55,26 @@
         margin: 20px;
     }
 }
+
+/* Estilos para los marcos */
+.marcoCard1 {
+    border: 75px solid transparent;
+    border-image: url('src/assets/marcos/marco-1.jpg') 75 round; /* Aumentar el ancho del borde */
+}
+
+.marcoCard2 {
+    border: 75px solid transparent;
+    border-image: url('src/assets/marcos/marco-2.jpg') 75 round; /* Aumentar el ancho del borde */
+}
+
+.marcoCard4 {
+    border: 75px solid transparent;
+    border-image: url('src/assets/marcos/marco-4.png') 75 round; /* Aumentar el ancho del borde */
+}
+
+.marcoCard5 {
+    border: 75px solid transparent;
+    border-image: url('src/assets/marcos/marco-5.png') 75 round; /* Aumentar el ancho del borde */
+}
+
+/* Agrega más estilos para los marcos según sea necesario */
