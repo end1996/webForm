@@ -19,22 +19,24 @@ const ImagePreview: React.FC = () => {
     };
 
     return (
-        <div className={styles.card}>
-            <div className={styles.cardBody}>
-                <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                    className={styles.fileInput}
-                    id="fileInput"
-                />
-                {imageSrc && (
-                    <img
-                        className={styles.cardImg}
-                        src={imageSrc}
-                        alt="Imagen seleccionada"
+        <div className={styles.cardContainer}>
+            <div className={styles.card}>
+                <div className={styles.cardBody}>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        className={styles.fileInput}
+                        id="fileInput"
                     />
-                )}
+                    {imageSrc && (
+                        <img
+                            className={styles.cardImg}
+                            src={imageSrc}
+                            alt="Imagen seleccionada"
+                        />
+                    )}
+                </div>
             </div>
         </div>
     );
