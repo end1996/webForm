@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import styles from './Tamanios.module.css';
+import { DimensionContext } from '../../../../context/DimensionContext';
 
 function Tamanios() {
-    const [selectedButton, setSelectedButton] = useState<string>('estandar'); // 'estandar' por defecto
+    const [selectedButton, setSelectedButton] = useState<string>('estandar');
     const [customWidth, setCustomWidth] = useState<string>('');
     const [customHeight, setCustomHeight] = useState<string>('');
     const [widthError, setWidthError] = useState<string>('');
     const [heightError, setHeightError] = useState<string>('');
     const [selectedGridButton, setSelectedGridButton] = useState<string>('');
+    const { setSelectedDimension } = useContext(DimensionContext);
 
     const handleButtonClick = (buttonName: string) => {
         setSelectedButton(buttonName);
@@ -20,10 +22,10 @@ function Tamanios() {
             setWidthError('El ancho mínimo es de 10 cm');
         } else if (Number(value) > 60) {
             setWidthError('El ancho máximo es de 60 cm');
-        }
-        else {
+        } else {
             setWidthError('');
         }
+        setSelectedDimension(`${value} X ${customHeight}`);
     };
 
     const handleHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,14 +35,15 @@ function Tamanios() {
             setHeightError('El alto mínimo es de 15 cm');
         } else if (Number(value) > 100) {
             setHeightError('El alto máximo es de 100 cm');
-        }
-        else {
+        } else {
             setHeightError('');
         }
+        setSelectedDimension(`${customWidth} X ${value}`);
     };
 
     const handleGridElement = (gridButtonName: string) => {
         setSelectedGridButton(gridButtonName);
+        setSelectedDimension(gridButtonName);
     }
 
     const dimensionesEstandar = [
@@ -116,7 +119,9 @@ function Tamanios() {
             ) : (
                 <div className={styles.gridDimensiones}>
                     {dimensiones.map((dimension) => (
-                        <button key={dimension} className={`${styles.gridButton} ${selectedGridButton === dimension ? styles.selected : ''}`}
+                        <button
+                            key={dimension}
+                            className={`${styles.gridButton} ${selectedGridButton === dimension ? styles.selected : ''}`}
                             onClick={() => handleGridElement(dimension)}
                         >
                             {dimension}

@@ -10,6 +10,7 @@ import TextInputContainer from "./components/Screens/Formulario/TextInput/TextIn
 import AgregarAlCarro from "./components/Screens/Formulario/AgregarAlCarro/AgregarAlCarro";
 import styles from './App.module.css';
 import MarcosView from "./components/Screens/Formulario/Iconos/Marco/MarcosView";
+import { DimensionProvider } from './context/DimensionContext'; // Nueva importación para el cambio de tamaño
 
 function App() {
   const [activeView, setActiveView] = useState<string>('main');
@@ -19,7 +20,7 @@ function App() {
   };
 
   return (
-    <>
+    <DimensionProvider> {/* Nuevo wrapper */}
       <Header />
       <div className={styles.container}>
         <div className={`${styles.column} ${styles.imagePreviewColumn}`}>
@@ -45,7 +46,7 @@ function App() {
           )}
         </div>
       </div>
-    </>
+    </DimensionProvider>
   );
 }
 

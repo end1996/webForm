@@ -1,3 +1,39 @@
+.dimensionWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 40px;
+}
+
+.widthLabel {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.heightWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.heightLabel {
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
 .cardContainer {
     display: flex;
     justify-content: center;
