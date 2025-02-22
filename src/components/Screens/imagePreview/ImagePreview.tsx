@@ -23,6 +23,15 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
         }
     };
 
+    const marcoImages = Array.from({ length: 12 }, (_, index) => `../../../assets/marcos/marco-${index + 1}.png`);
+
+    const getBorderImageStyle = (marcoIndex: number) => {
+        const imageUrl = new URL(marcoImages[marcoIndex], import.meta.url).href;
+        return {
+            borderImage: `url(${imageUrl}) 75 round`
+        };
+    };
+
     return (
         <div className={styles.cardContainer}>
             <div className={`${styles.card} ${selectedButton === 'soloImpresion' ? styles.noBorder : ''}`}>
@@ -36,9 +45,10 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
                     />
                     {imageSrc && (
                         <img
-                            className={`${styles.cardImg} ${selectedMarco ? `${styles.marco} ${styles[`marco${selectedMarco.replace(' ', '')}`]}` : ''}`}
+                            className={`${styles.cardImg} ${selectedMarco ? styles.marco : ''}`}
                             src={imageSrc}
                             alt="Imagen seleccionada"
+                            style={selectedMarco ? getBorderImageStyle(parseInt(selectedMarco.split(' ')[1]) - 1) : {}}
                         />
                     )}
                 </div>

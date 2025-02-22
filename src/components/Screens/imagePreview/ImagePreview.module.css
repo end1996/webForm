@@ -50,31 +50,17 @@
     display: none;
 }
 
+/* Estilos comunes para los marcos */
+.marco {
+    border: 75px solid transparent;
+}
+
 @media (max-width: 1280px ){
     .card {
         margin: 20px;
     }
-}
 
-/* Estilos para los marcos */
-.marcoCard1 {
-    border: 75px solid transparent;
-    border-image: url('src/assets/marcos/marco-1.jpg') 75 round; /* Aumentar el ancho del borde */
+    .marco {
+        border: 32px solid transparent;
+    }
 }
-
-.marcoCard2 {
-    border: 75px solid transparent;
-    border-image: url('src/assets/marcos/marco-2.jpg') 75 round; /* Aumentar el ancho del borde */
-}
-
-.marcoCard4 {
-    border: 75px solid transparent;
-    border-image: url('src/assets/marcos/marco-4.png') 75 round; /* Aumentar el ancho del borde */
-}
-
-.marcoCard5 {
-    border: 75px solid transparent;
-    border-image: url('src/assets/marcos/marco-5.png') 75 round; /* Aumentar el ancho del borde */
-}
-
-/* Agrega más estilos para los marcos según sea necesario */

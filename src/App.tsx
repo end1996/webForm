@@ -24,10 +24,10 @@ function App() {
     setSelectedButton(buttonName);
   };
 
-   // Manejar el cambio de marco seleccionado
-   const handleMarcoChange = (marcoName: string) => {
-    setSelectedMarco(marcoName)
-}
+  // Manejar el cambio de marco seleccionado
+  const handleMarcoChange = (marcoName: string) => {
+    setSelectedMarco(marcoName);
+  };
 
   return (
     <>
