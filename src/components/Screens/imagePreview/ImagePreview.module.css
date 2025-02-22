@@ -62,5 +62,8 @@
 
     .marco {
         border: 32px solid transparent;
+        border-image-width: 400;
+        border-image-slice: 400;
+        border-image-repeat: round;
     }
 }
