@@ -52,18 +52,18 @@
 
 /* Estilos comunes para los marcos */
 .marco {
-    border: 75px solid transparent;
+    border: 60px solid transparent;
 }
 
-@media (max-width: 1280px ){
+@media (max-width: 768px ){
     .card {
         margin: 20px;
     }
 
     .marco {
         border: 32px solid transparent;
-        border-image-width: 400;
-        border-image-slice: 400;
+        border-image-width: 200;
+        border-image-slice: 200;
         border-image-repeat: round;
     }
 }

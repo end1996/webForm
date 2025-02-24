@@ -28,7 +28,10 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
     const getBorderImageStyle = (marcoIndex: number) => {
         const imageUrl = new URL(marcoImages[marcoIndex], import.meta.url).href;
         return {
-            borderImage: `url(${imageUrl}) 400 400 400 400 round`
+            borderImage: `url(${imageUrl}) 350 round`,
+            '@media (max-width: 780px)': {
+            borderImage: `url(${imageUrl}) 200 round`
+            }
         };
     };
 

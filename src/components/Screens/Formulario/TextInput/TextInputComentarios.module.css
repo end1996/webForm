@@ -5,6 +5,7 @@
     height: 180px;
     width: 100%;
     border: 1px solid #CFCFCF;
+    position: relative; /* 🔹 Permite posicionar elementos dentro del cuadro */
 }
 
 .textTitle {
@@ -29,8 +30,11 @@
 .buttonContainer {
     margin-top: 10px;
     display: flex;
+    justify-content: flex-end; /* 🔹 Botón a la derecha */
+    align-items: center;
     width: 100%;
-    justify-content: end;
+    max-width: 600px;
+    gap: 10px; /* Espacio entre el botón y el mensaje */
 }
 
 .buttonSubmit {
@@ -42,3 +46,15 @@
     border: 1px solid #D9D9D9;
 }
 
+.buttonSubmit:hover {
+    background-color: #E6693A; /* Un poco más oscuro al pasar el mouse */
+}
+
+.message {
+    font-size: 14px;
+    color: green;
+    font-weight: bold;
+    position: absolute;
+    left: 10px; /* 🔹 Alinea el mensaje a la izquierda dentro del cuadro */
+    bottom: 10px; /* 🔹 Ubica el mensaje dentro del cuadro */
+}
