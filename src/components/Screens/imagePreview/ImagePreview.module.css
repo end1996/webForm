@@ -52,18 +52,51 @@
 
 /* Estilos comunes para los marcos */
 .marco {
-    border: 60px solid transparent;
+    border: 75px solid transparent;
 }
 
-@media (max-width: 768px ){
+.marco1 {
+    border-width: 57px;
+}
+
+.marco2 {
+    border-width: 76px;
+}
+
+.marco3 {
+    border-width: 113px;
+}
+
+.marco4 {
+    border-width: 151px;
+}
+
+/* Agrega más clases según sea necesario */
+
+@media (max-width: 1280px ){
     .card {
         margin: 20px;
     }
 
     .marco {
         border: 32px solid transparent;
-        border-image-width: 200;
-        border-image-slice: 200;
-        border-image-repeat: round;
+    }
+}
+
+@media (max-width: 768px) {
+    .marco1 {
+        border-width: 32px;
+    }
+
+    .marco2 {
+        border-width: 42px;
+    }
+
+    .marco3 {
+        border-width: 63px;
+    }
+
+    .marco4 {
+        border-width: 84px;
     }
 }

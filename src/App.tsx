@@ -15,6 +15,7 @@ function App() {
   const [activeView, setActiveView] = useState<string>('main');
   const [selectedButton, setSelectedButton] = useState<string>('soloImpresion'); // solo impresión por defecto
   const [selectedMarco, setSelectedMarco] = useState<string>('');
+  const [selectedSize, setSelectedSize] = useState<string>('1.5 cm'); // Estado para el tamaño seleccionado
 
   const handleIconClick = (view: string) => {
     setActiveView(view);
@@ -29,12 +30,21 @@ function App() {
     setSelectedMarco(marcoName);
   };
 
+  // Manejar el cambio de tamaño seleccionado
+  const handleSizeChange = (size: string) => {
+    setSelectedSize(size);
+  };
+
   return (
     <>
       <Header />
       <div className={styles.container}>
         <div className={`${styles.column} ${styles.imagePreviewColumn}`}>
-          <ImagePreview selectedButton={selectedButton} selectedMarco={selectedMarco} />
+          <ImagePreview
+            selectedButton={selectedButton}
+            selectedMarco={selectedMarco}
+            selectedSize={selectedSize}
+          />
         </div>
         <div className={`${styles.column} ${styles.formColumn}`}>
           <Iconos onIconClick={handleIconClick} />
@@ -50,7 +60,11 @@ function App() {
           )}
           {activeView === 'marcos' && (
             <>
-              <MarcosView selectedMarco={selectedMarco} onMarcoClick={handleMarcoChange} />
+              <MarcosView
+                selectedMarco={selectedMarco}
+                onMarcoClick={handleMarcoChange}
+                onSizeChange={handleSizeChange}
+              />
               <AgregarAlCarro />
             </>
           )}

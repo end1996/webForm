@@ -6,10 +6,11 @@ import defaultImage from '../../../assets/arte.jpg';
 interface ImagePreviewProps {
     selectedButton: string;
     selectedMarco: string;
+    selectedSize: string;
 }
 
-const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMarco }) => {
-    // Usa la imagen importada como valor inicial
+const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMarco, selectedSize }) => {
+// Usa la imagen importada como valor inicial
     const [imageSrc, setImageSrc] = useState<string | null>(defaultImage);
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,9 +31,15 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
         return {
             borderImage: `url(${imageUrl}) 350 round`,
             '@media (max-width: 780px)': {
-            borderImage: `url(${imageUrl}) 200 round`
+                borderImage: `url(${imageUrl}) 200 round`
             }
         };
+    };
+
+    const getBorderClass = () => {
+        const marcoIndex = selectedMarco ? parseInt(selectedMarco.split(' ')[1]) - 1 : -1;
+        const sizeClass = selectedSize === '1.5 cm' ? 'marco1' : selectedSize === '2 cm' ? 'marco2' : selectedSize === '3 cm' ? 'marco3' : 'marco4';
+        return marcoIndex >= 0 ? `${styles[`marco${marcoIndex + 1}`]} ${styles[sizeClass]}` : '';
     };
 
     return (
@@ -48,7 +55,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
                     />
                     {imageSrc && (
                         <img
-                            className={`${styles.cardImg} ${selectedMarco ? styles.marco : ''}`}
+                            className={`${styles.cardImg} ${selectedMarco ? `${styles.marco} ${getBorderClass()}` : ''}`}
                             src={imageSrc}
                             alt="Imagen seleccionada"
                             style={selectedMarco ? getBorderImageStyle(parseInt(selectedMarco.split(' ')[1]) - 1) : {}}
