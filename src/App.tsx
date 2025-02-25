@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Header from "./components/Header";
 import ImagePreview from "./components/Screens/imagePreview/ImagePreview";
 import Iconos from "./components/Screens/Formulario/Iconos/Iconos";
 import BotonesEnmarcado from "./components/Screens/Formulario/BotonesEnmarcado/BotonesEnmarcado";
 import SubirImagen from "./components/Screens/Formulario/SubirImagen/SubirImagen";
-/*import Dimensiones from "./components/Screens/Formulario/Dimensiones";*/
 import Tamanios from "./components/Screens/Formulario/TamanioGrid/Tamanios";
+import TamaniosHorizontal from "./components/Screens/Formulario/TamaniosHorizontalGrid/TamaniosHorizontal";
 import TextInputContainer from "./components/Screens/Formulario/TextInput/TextInputComentarios";
 import AgregarAlCarro from "./components/Screens/Formulario/AgregarAlCarro/AgregarAlCarro";
 import styles from './App.module.css';
 import MarcosView from "./components/Screens/Formulario/Iconos/Marco/MarcosView";
-import { DimensionProvider } from './context/DimensionContext'; // Nueva importación para el cambio de tamaño
+import { DimensionProvider } from './context/DimensionContext';
+import { OrientationProvider, OrientationContext } from './context/OrientationContext';
+import Dimensiones from "./components/Screens/Formulario/Dimensiones/Dimensiones";
 
 function App() {
   const [activeView, setActiveView] = useState<string>('main');
@@ -19,33 +21,41 @@ function App() {
     setActiveView(view);
   };
 
+  const MainContent = () => {
+    const { orientation } = useContext(OrientationContext);
+    
+    return (
+      <>
+        <SubirImagen />
+        <BotonesEnmarcado />
+        <Dimensiones />
+        {orientation === 'horizontal' ? <TamaniosHorizontal /> : <Tamanios />}
+        <TextInputContainer />
+        <AgregarAlCarro />
+      </>
+    );
+  };
+
   return (
-    <DimensionProvider> {/* Nuevo wrapper */}
-      <Header />
-      <div className={styles.container}>
-        <div className={`${styles.column} ${styles.imagePreviewColumn}`}>
-          <ImagePreview />
+    <DimensionProvider>
+      <OrientationProvider>
+        <Header />
+        <div className={styles.container}>
+          <div className={`${styles.column} ${styles.imagePreviewColumn}`}>
+            <ImagePreview />
+          </div>
+          <div className={`${styles.column} ${styles.formColumn}`}>
+            <Iconos onIconClick={handleIconClick} />
+            {activeView === 'main' && <MainContent />}
+            {activeView === 'marcos' && (
+              <>
+                <MarcosView />
+                <AgregarAlCarro />
+              </>
+            )}
+          </div>
         </div>
-        <div className={`${styles.column} ${styles.formColumn}`}>
-          <Iconos onIconClick={handleIconClick} />
-          {activeView === 'main' && (
-            <>
-              <SubirImagen />
-              <BotonesEnmarcado />
-              {/*<Dimensiones  />*/}
-              <Tamanios />
-              <TextInputContainer />
-              <AgregarAlCarro />
-            </>
-          )}
-          {activeView === 'marcos' && (
-            <>
-              <MarcosView />
-              <AgregarAlCarro />
-            </>
-          )}
-        </div>
-      </div>
+      </OrientationProvider>
     </DimensionProvider>
   );
 }

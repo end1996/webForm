@@ -12,8 +12,12 @@ const ImagePreview: React.FC = () => {
     useEffect(() => {
         if (selectedDimension) {
             const [width, height] = selectedDimension.split(' X ').map(Number);
-            const widthPx = width * 20;
-            const heightPx = height * 20;
+            
+            // Diferentes factores de escala según la orientación
+            const scaleFactor = width > height ? 17 : 12;
+            const widthPx = width * scaleFactor;
+            const heightPx = height * scaleFactor;
+            
             setFrameSize({ width: `${widthPx}px`, height: `${heightPx}px` });
             setDimensions({ width: `${width}`, height: `${height}` });
         }

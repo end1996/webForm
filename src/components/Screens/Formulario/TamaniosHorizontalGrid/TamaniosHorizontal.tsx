@@ -1,12 +1,15 @@
-import { useState } from 'react';
-import styles from './Tamanios.module.css';
+import { useState, useContext } from 'react';
+import styles from './TamaniosHorizontal.module.css';
+import { DimensionContext } from '../../../../context/DimensionContext';
 
-function Tamanios() {
-    const [selectedButton, setSelectedButton] = useState<string>('estandar'); // 'estandar' por defecto
+function TamaniosHorizontal() {
+    const [selectedButton, setSelectedButton] = useState<string>('estandar');
     const [customWidth, setCustomWidth] = useState<string>('');
     const [customHeight, setCustomHeight] = useState<string>('');
     const [widthError, setWidthError] = useState<string>('');
     const [heightError, setHeightError] = useState<string>('');
+    const [selectedGridButton, setSelectedGridButton] = useState<string>('');
+    const { setSelectedDimension } = useContext(DimensionContext);
 
     const handleButtonClick = (buttonName: string) => {
         setSelectedButton(buttonName);
@@ -15,36 +18,43 @@ function Tamanios() {
     const handleWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setCustomWidth(value);
-        if (Number(value) < 10) {
-            setWidthError('El ancho mínimo es de 10 cm');
-        } else if (Number(value) > 60) {
-            setWidthError('El ancho máximo es de 60 cm');
-        }
-        else {
+        if (Number(value) < 15) {
+            setWidthError('El ancho mínimo es de 15 cm');
+        } else if (Number(value) > 100) {
+            setWidthError('El ancho máximo es de 100 cm');
+        } else {
             setWidthError('');
         }
+        setSelectedDimension(`${value} X ${customHeight}`);
     };
 
     const handleHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setCustomHeight(value);
-        if (Number(value) < 15) {
-            setHeightError('El alto mínimo es de 15 cm');
-        } else if (Number(value) > 100) {
-            setHeightError('El alto máximo es de 100 cm');
-        }
-        else {
+        if (Number(value) < 10) {
+            setHeightError('El alto mínimo es de 10 cm');
+        } else if (Number(value) > 60) {
+            setHeightError('El alto máximo es de 60 cm');
+        } else {
             setHeightError('');
         }
+        setSelectedDimension(`${customWidth} X ${value}`);
     };
 
+    const handleGridElement = (gridButtonName: string) => {
+        setSelectedGridButton(gridButtonName);
+        setSelectedDimension(gridButtonName);
+    }
+
+    // Invertir las dimensiones estándar
     const dimensionesEstandar = [
-        '10 X 15', '13 X 18', '15 X 21', '20 X 25', '20 X 30', '20 X 40', '20 X 50', '30 X 40',
-        '25 X 30', '25 X 38', '25 X 40', '25 X 50', '25 X 60', '30 X 40', '30 X 45', '30 X 50', '30 X 60',
+        '15 X 10', '18 X 13', '21 X 15', '25 X 20', '30 X 20', '40 X 20', '50 X 20', '60 X 20',
+        '30 X 25', '38 X 25', '40 X 25', '50 X 25', '60 X 25', '40 X 30', '45 X 30', '50 X 30', '60 X 30',
     ];
 
+    // Invertir otras medidas
     const otrasMedidas = [
-        '40 X 50', '40 X 60', '50 X 60', '50 X 70', '60 X 80', '60 X 90', '60 X 100',
+        '50 X 40', '60 X 40', '60 X 50', '70 X 50', '80 X 60', '90 X 60', '100 X 60',
     ];
 
     const dimensiones = selectedButton === 'otros' ? otrasMedidas : dimensionesEstandar;
@@ -52,17 +62,9 @@ function Tamanios() {
     return (
         <div className={styles.tamaniosContainer}>
             <div className={styles.tamanioSelectContainer}>
-                <div>
+                <div className={styles.tamanioSelectTitle}>
                     <h2 className={styles.textTitle}>Tamaño</h2>
-                </div>
-                <div>
-                    <select className={styles.tamanioSelect}>
-                        <option>cm</option>
-                        <option>mts</option>
-                    </select>
-                </div>
-                <div>
-                    <label className={styles.textSecondary}>(Alto x Ancho)</label>
+                    <span>(Ancho x Alto)</span>
                 </div>
             </div>
             <div className={styles.tamanioButtonsContainer}>
@@ -92,8 +94,8 @@ function Tamanios() {
                             Ancho:
                             <input
                                 type="number"
-                                min={10}
-                                max={60}
+                                min={15}
+                                max={100}
                                 value={customWidth}
                                 onChange={handleWidthChange}
                                 className={styles.customInput}
@@ -106,8 +108,8 @@ function Tamanios() {
                             Alto:
                             <input
                                 type="number"
-                                min={15}
-                                max={100}
+                                min={10}
+                                max={60}
                                 value={customHeight}
                                 onChange={handleHeightChange}
                                 className={styles.customInput}
@@ -118,8 +120,14 @@ function Tamanios() {
                 </div>
             ) : (
                 <div className={styles.gridDimensiones}>
-                    {dimensiones.map((dimension, index) => (
-                        <button key={index} className={styles.dimensionButton}>{dimension}</button>
+                    {dimensiones.map((dimension) => (
+                        <button
+                            key={dimension}
+                            className={`${styles.gridButton} ${selectedGridButton === dimension ? styles.selected : ''}`}
+                            onClick={() => handleGridElement(dimension)}
+                        >
+                            {dimension}
+                        </button>
                     ))}
                 </div>
             )}
@@ -127,4 +135,4 @@ function Tamanios() {
     );
 }
 
-export default Tamanios;
+export default TamaniosHorizontal;
