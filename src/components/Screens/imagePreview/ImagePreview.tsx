@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './ImagePreview.module.css';
-// Importa la imagen desde la carpeta assets
 import defaultImage from '../../../assets/arte.jpg';
+import { DimensionContext } from '../../../context/DimensionContext';
 
 interface ImagePreviewProps {
     selectedButton: string;
@@ -10,10 +10,22 @@ interface ImagePreviewProps {
 }
 
 const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMarco, selectedSize }) => {
-    // Usa la imagen importada como valor inicial
     const [imageSrc, setImageSrc] = useState<string | null>(defaultImage);
+    const { selectedDimension } = useContext(DimensionContext);
+    const [frameSize, setFrameSize] = useState({ width: 'auto', height: 'auto' });
+    const [dimensions, setDimensions] = useState({ width: '0', height: '0' });
 
-    // Maneja el cambio de imagen cuando el usuario selecciona un archivo
+    useEffect(() => {
+        if (selectedDimension) {
+            const [width, height] = selectedDimension.split(' X ').map(Number);
+            const scaleFactor = width > height ? 17 : 12;
+            const widthPx = width * scaleFactor;
+            const heightPx = height * scaleFactor;
+            setFrameSize({ width: `${widthPx}px`, height: `${heightPx}px` });
+            setDimensions({ width: `${width}`, height: `${height}` });
+        }
+    }, [selectedDimension]);
+
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
@@ -25,10 +37,8 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
         }
     };
 
-    // Genera una lista de rutas de imágenes de marcos
     const marcoImages = Array.from({ length: 12 }, (_, index) => `../../../assets/marcos/marco-${index + 1}.png`);
 
-    // Obtiene el estilo de la imagen del borde basado en el índice del marco
     const getBorderImageStyle = (marcoIndex: number) => {
         const imageUrl = new URL(marcoImages[marcoIndex], import.meta.url).href;
         return {
@@ -39,32 +49,37 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
         };
     };
 
-    // Obtiene la clase del borde basado en el marco seleccionado y el tamaño
     const getBorderClass = () => {
         const marcoIndex = selectedMarco ? parseInt(selectedMarco.split(' ')[1]) - 1 : -1;
-        const sizeClass = selectedSize === '1.5 cm' ? 'marco1' : selectedSize === '2 cm' ? 'marco2' : 'marco3';
+        const sizeClass = selectedSize === '1.5 cm' ? 'marco1' : selectedSize === '2 cm' ? 'marco2' : selectedSize === '3 cm' ? 'marco3' : 'marco4';
         return marcoIndex >= 0 ? `${styles[`marco${marcoIndex + 1}`]} ${styles[sizeClass]}` : '';
     };
 
     return (
         <div className={styles.cardContainer}>
-            <div className={`${styles.card} ${selectedButton === 'soloImpresion' ? styles.noBorder : ''}`}>
-                <div className={styles.cardBody}>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleImageChange}
-                        className={styles.fileInput}
-                        id="fileInput"
-                    />
-                    {imageSrc && (
-                        <img
-                            className={`${styles.cardImg} ${selectedMarco ? `${styles.marco} ${getBorderClass()}` : ''}`}
-                            src={imageSrc}
-                            alt="Imagen seleccionada"
-                            style={selectedMarco ? getBorderImageStyle(parseInt(selectedMarco.split(' ')[1]) - 1) : {}}
-                        />
-                    )}
+            <div className={styles.dimensionWrapper}>
+                <div className={styles.widthLabel}>{dimensions.width} cm</div>
+                <div className={styles.heightWrapper}>
+                    <div className={styles.heightLabel}>{dimensions.height} cm</div>
+                    <div className={`${styles.card} ${selectedButton === 'soloImpresion' ? styles.noBorder : ''}`} style={{ width: frameSize.width, height: frameSize.height }}>
+                        <div className={styles.cardBody}>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                                className={styles.fileInput}
+                                id="fileInput"
+                            />
+                            {imageSrc && (
+                                <img
+                                    className={`${styles.cardImg} ${selectedMarco ? `${styles.marco} ${getBorderClass()}` : ''}`}
+                                    src={imageSrc}
+                                    alt="Imagen seleccionada"
+                                    style={selectedMarco ? getBorderImageStyle(parseInt(selectedMarco.split(' ')[1]) - 1) : {}}
+                                />
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

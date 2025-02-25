@@ -2,10 +2,12 @@
     display: flex;
     justify-content: center;
     padding: 20px;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .card {
-    /*border: 30px solid #000; /* Estilo del borde por defecto */
+    border: 30px solid #000;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -14,6 +16,8 @@
     overflow: hidden;
     border-radius: 8px;
     animation: fadeIn 1s ease-in-out;
+    transition: all 0.3s ease;
+    max-width: calc(100vw - 100px);
 }
 
 .noBorder {
@@ -35,14 +39,17 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
 .cardImg {
     width: 100%;
-    max-height: 650px;
-    object-fit: contain;
-    display: flex;
-    margin: 10px;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0;
     border: 1px solid transparent; /*Margen claro solo para remarcar imagen*/
 }
 
@@ -89,4 +96,43 @@
     .marco3 {
         border-width: 63px;
     }
+}
+
+.dimensionWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 40px;
+    transition: all 0.3s ease;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.widthLabel {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.heightWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.heightLabel {
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
 }

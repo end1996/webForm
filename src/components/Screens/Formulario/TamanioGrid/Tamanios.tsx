@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import styles from './Tamanios.module.css';
+import { DimensionContext } from '../../../../context/DimensionContext';
 
 function Tamanios() {
     const [selectedButton, setSelectedButton] = useState<string>('estandar'); // 'estandar' por defecto
@@ -8,6 +9,7 @@ function Tamanios() {
     const [widthError, setWidthError] = useState<string>('');
     const [heightError, setHeightError] = useState<string>('');
     const [selectedGridButton, setSelectedGridButton] = useState<string>('');
+    const { setSelectedDimension } = useContext(DimensionContext);
 
     const handleButtonClick = (buttonName: string) => {
         setSelectedButton(buttonName);
@@ -24,6 +26,7 @@ function Tamanios() {
         else {
             setWidthError('');
         }
+        setSelectedDimension(`${value} X ${customHeight}`);
     };
 
     const handleHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,10 +40,12 @@ function Tamanios() {
         else {
             setHeightError('');
         }
+        setSelectedDimension(`${customWidth} X ${value}`);
     };
 
     const handleGridElement = (gridButtonName: string) => {
         setSelectedGridButton(gridButtonName);
+        setSelectedDimension(gridButtonName);
     }
 
     const dimensionesEstandar = [
