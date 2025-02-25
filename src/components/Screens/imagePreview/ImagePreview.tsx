@@ -12,8 +12,8 @@ const ImagePreview: React.FC = () => {
     useEffect(() => {
         if (selectedDimension) {
             const [width, height] = selectedDimension.split(' X ').map(Number);
-            const widthPx = width * 37.8;
-            const heightPx = height * 37.8;
+            const widthPx = width * 20;
+            const heightPx = height * 20;
             setFrameSize({ width: `${widthPx}px`, height: `${heightPx}px` });
             setDimensions({ width: `${width}`, height: `${height}` });
         }
