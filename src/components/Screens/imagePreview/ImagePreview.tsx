@@ -10,9 +10,10 @@ interface ImagePreviewProps {
 }
 
 const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMarco, selectedSize }) => {
-// Usa la imagen importada como valor inicial
+    // Usa la imagen importada como valor inicial
     const [imageSrc, setImageSrc] = useState<string | null>(defaultImage);
 
+    // Maneja el cambio de imagen cuando el usuario selecciona un archivo
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
@@ -24,8 +25,10 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
         }
     };
 
+    // Genera una lista de rutas de imágenes de marcos
     const marcoImages = Array.from({ length: 12 }, (_, index) => `../../../assets/marcos/marco-${index + 1}.png`);
 
+    // Obtiene el estilo de la imagen del borde basado en el índice del marco
     const getBorderImageStyle = (marcoIndex: number) => {
         const imageUrl = new URL(marcoImages[marcoIndex], import.meta.url).href;
         return {
@@ -36,9 +39,10 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
         };
     };
 
+    // Obtiene la clase del borde basado en el marco seleccionado y el tamaño
     const getBorderClass = () => {
         const marcoIndex = selectedMarco ? parseInt(selectedMarco.split(' ')[1]) - 1 : -1;
-        const sizeClass = selectedSize === '1.5 cm' ? 'marco1' : selectedSize === '2 cm' ? 'marco2' : selectedSize === '3 cm' ? 'marco3' : 'marco4';
+        const sizeClass = selectedSize === '1.5 cm' ? 'marco1' : selectedSize === '2 cm' ? 'marco2' : 'marco3';
         return marcoIndex >= 0 ? `${styles[`marco${marcoIndex + 1}`]} ${styles[sizeClass]}` : '';
     };
 

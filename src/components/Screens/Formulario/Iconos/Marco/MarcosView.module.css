@@ -44,8 +44,7 @@
 }
 
 .card.selected {
-  background-color: #FB7B48;
-  color: #ffff;
+  border: 2px solid #FB7B48;
 }
 
 .cardBody {

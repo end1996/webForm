@@ -52,7 +52,7 @@
 
 /* Estilos comunes para los marcos */
 .marco {
-    border: 75px solid transparent;
+    border: 76px solid transparent;
 }
 
 .marco1 {
@@ -66,12 +66,6 @@
 .marco3 {
     border-width: 113px;
 }
-
-.marco4 {
-    border-width: 151px;
-}
-
-/* Agrega más clases según sea necesario */
 
 @media (max-width: 1280px ){
     .card {
@@ -94,9 +88,5 @@
 
     .marco3 {
         border-width: 63px;
-    }
-
-    .marco4 {
-        border-width: 84px;
     }
 }

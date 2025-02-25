@@ -11,9 +11,9 @@ interface MarcoSelectedProps {
 const MarcosView = ({ selectedMarco, onMarcoClick, onSizeChange }: MarcoSelectedProps) => {
     const cards = Array.from({ length: 12 }, (_, index) => `Card ${index + 1}`);
     const ref = useRef<HTMLDivElement>(null);
-    const marcoSize = ['1.5 cm', '2 cm', '3 cm', '4 cm'];
+    const marcoSize = ['1.5 cm', '2 cm', '3 cm'];
 
-    const [selectedSize, setSelectedSize] = useState<string>('');
+    const [selectedSize, setSelectedSize] = useState<string>(marcoSize[1]); // Tamaño de marco de 2cm por defecto
 
     useEffect(() => {
         function handleClickOutside(e: Event) {

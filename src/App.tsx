@@ -23,6 +23,7 @@ function App() {
 
   const handleButtonClick = (buttonName: string) => {
     setSelectedButton(buttonName);
+    (buttonName === 'enmarcacionImpresion') ? setSelectedMarco('Card 1') : setSelectedMarco('');
   };
 
   // Manejar el cambio de marco seleccionado
