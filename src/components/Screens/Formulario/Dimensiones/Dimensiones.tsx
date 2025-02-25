@@ -1,4 +1,4 @@
-/*import { useState } from 'react';
+import { useState } from 'react';
 import styles from './Dimensiones.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowsLeftRight, faArrowsUpDown } from '@fortawesome/free-solid-svg-icons';
@@ -33,4 +33,4 @@ function Dimensiones() {
   );
 }
 
-export default Dimensiones;*/
+export default Dimensiones;

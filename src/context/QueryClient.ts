@@ -1,10 +1,3 @@
-import axios from "axios";
+import { QueryClient } from "@tanstack/react-query";
 
-const ApiMarco = axios.create({
-    baseURL: "https://dragonball-api.com/api/characters",
-    headers: {
-        "Content-Type": "application/json",
-    },
-});
-
-export default ApiMarco;
+export const queryClient = new QueryClient();

@@ -1,4 +1,3 @@
-/* 
 .textTitle {
     font-size: 20px;
     color: #44A0AA;
@@ -26,5 +25,5 @@
 
 .orientationButton.selected {
     background-color: #FB7B48; /* Color para el botón seleccionado */
-    /*color: #fff;
-} */
+    color: #fff;
+}

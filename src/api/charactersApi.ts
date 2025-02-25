@@ -1,6 +1,16 @@
 import apiClient from "./apiClient";
 
-export const fetchCharacters = async () => {
-  const { data } = await apiClient.get("/characters");
-  return data // La API devuelve un objeto con "items"
+interface Character {
+  id: number;
+  name: string;
+  image: string;
+}
+
+interface CharactersResponse {
+  items: Character[];
+}
+
+export const fetchCharacters = async (): Promise<Character[]> => {
+  const { data } = await apiClient.get<CharactersResponse>("/characters");
+  return data.items;
 };
