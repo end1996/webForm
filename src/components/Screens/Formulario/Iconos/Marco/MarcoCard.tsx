@@ -1,28 +1,34 @@
 import { Card } from 'react-bootstrap';
 import styles from './MarcosView.module.css';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 export type MarcoProps = {
-    id: number;
-    name: string;
-    image: string;
+    id?: number;
+    nombre: string;
+    estado?: boolean;
     selectedMarco: string;
     onMarcoClick: (marcoName: string) => void;
 };
 
-const MarcoCard = ({ id, name, image, selectedMarco, onMarcoClick }: MarcoProps) => {
+const MarcoCard = ({ nombre, selectedMarco, onMarcoClick }: MarcoProps) => {
     return (
-        <Card
-            className={`${styles.card} ${selectedMarco === name ? styles.selected : ''}`}
-            onClick={() => onMarcoClick(name)}
-        >
-            <Card.Img
-                className={styles.cardImg}
-                variant="top"
-                src={image}
-                height={150}
-            />
-            <Card.Body className={styles.cardBody}>{name}</Card.Body>
-        </Card>
+        <PhotoProvider key={nombre}>
+            <Card
+                className={`${styles.card} ${selectedMarco === `Card ${nombre}` ? styles.selected : ''}`}
+                onClick={() => onMarcoClick(`${nombre}`)}
+            >
+                <PhotoView src={`src/assets/marcos/marco-${nombre}.png`}>
+                    <Card.Img
+                        className={styles.cardImg}
+                        variant="top"
+                        src={`src/assets/marcos/marco-${nombre}.png`}
+                        height={150}
+                    />
+                </PhotoView>
+                <Card.Body className={styles.cardBody}>{nombre}</Card.Body>
+            </Card>
+        </PhotoProvider>
     );
 };
 

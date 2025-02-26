@@ -1,8 +1,9 @@
-import { Card } from 'react-bootstrap';
+//import { Card } from 'react-bootstrap';
 import { useState, useRef, useEffect } from 'react';
 import styles from './MarcosView.module.css';
-import { PhotoProvider, PhotoView } from 'react-photo-view';
+//import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import MarcosList from './MarcosList';
 
 interface MarcoSelectedProps {
     selectedMarco: string;
@@ -11,7 +12,7 @@ interface MarcoSelectedProps {
 }
 
 const MarcosView = ({ selectedMarco, onMarcoClick, onSizeChange }: MarcoSelectedProps) => {
-    const cards = Array.from({ length: 12 }, (_, index) => `Card ${index + 1}`);
+    //const cards = Array.from({ length: 12 }, (_, index) => `Card ${index + 1}`);
     const ref = useRef<HTMLDivElement>(null);
     const marcoSize = ['1.5 cm', '2 cm', '3 cm'];
 
@@ -49,25 +50,8 @@ const MarcosView = ({ selectedMarco, onMarcoClick, onSizeChange }: MarcoSelected
                     </button>
                 ))}
             </div>
-            <div className={styles.marcosViewContainer}>
-                {cards.map((card, index) => (
-                    <PhotoProvider key={index}>
-                        <Card
-                            className={`${styles.card} ${selectedMarco === `Card ${index + 1}` ? styles.selected : ''}`}
-                            onClick={() => onMarcoClick(`Card ${index + 1}`)}
-                        >
-                            <PhotoView src={`src/assets/marcos/marco-${index + 1}.png`}>
-                                <Card.Img
-                                    className={styles.cardImg}
-                                    variant="top"
-                                    src={`src/assets/marcos/marco-${index + 1}.png`}
-                                    height={150}
-                                />
-                            </PhotoView>
-                            <Card.Body className={styles.cardBody}>{card}</Card.Body>
-                        </Card>
-                    </PhotoProvider>
-                ))}
+            <div>
+                <MarcosList selectedMarco={selectedMarco} onMarcoClick={onMarcoClick} />
             </div>
         </div>
     );

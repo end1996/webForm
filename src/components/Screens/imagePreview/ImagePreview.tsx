@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import styles from './ImagePreview.module.css';
 import defaultImage from '../../../assets/arte.jpg';
 import { DimensionContext } from '../../../context/DimensionContext';
+import { loadImages } from './loadImages';
 
 interface ImagePreviewProps {
     selectedButton: string;
@@ -12,7 +13,7 @@ interface ImagePreviewProps {
 const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMarco, selectedSize }) => {
     const [imageSrc, setImageSrc] = useState<string | null>(defaultImage);
     const { selectedDimension } = useContext(DimensionContext);
-    const [frameSize, setFrameSize] = useState({ width: 'auto', height: 'auto' });
+    const [frameSize, setFrameSize] = useState({ width: '100%', height: '80vh' });
     const [dimensions, setDimensions] = useState({ width: '0', height: '0' });
 
     useEffect(() => {
@@ -37,10 +38,17 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
         }
     };
 
-    const marcoImages = Array.from({ length: 12 }, (_, index) => `../../../assets/marcos/marco-${index + 1}.png`);
+    // Cargar todas las imágenes de la carpeta src/assets/marcos
+    const marcoImages = loadImages();
+    console.log(marcoImages)
 
-    const getBorderImageStyle = (marcoIndex: number) => {
-        const imageUrl = new URL(marcoImages[marcoIndex], import.meta.url).href;
+    const getBorderImageStyle = (marcoName: string) => {
+        console.log(marcoName)
+        const imageUrl = marcoImages[`marco-${marcoName}`];
+        if (!imageUrl) {
+            console.error(`Image not found for marcoName: ${marcoName}`);
+            return {};
+        }
         return {
             borderImage: `url(${imageUrl}) 350 round`,
             '@media (max-width: 780px)': {
@@ -75,7 +83,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
                                     className={`${styles.cardImg} ${selectedMarco ? `${styles.marco} ${getBorderClass()}` : ''}`}
                                     src={imageSrc}
                                     alt="Imagen seleccionada"
-                                    style={selectedMarco ? getBorderImageStyle(parseInt(selectedMarco.split(' ')[1]) - 1) : {}}
+                                    style={selectedMarco ? getBorderImageStyle(selectedMarco): {}}
                                 />
                             )}
                         </div>
