@@ -1,7 +1,7 @@
 .tamaniosContainer {
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px;
+    padding-bottom: 10px;
 }
 
 .textTitle {
@@ -18,7 +18,6 @@
     gap: 10px;
     align-items: center;
     align-content: center;
-    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -28,7 +27,12 @@
     text-align: center;
 }
 
-.tamanioSelect.selected {
+.tamanioSelectTitle {
+    display: flex;
+    gap: 10px;
+}
+
+.tamanioSelect.selected, .tamanioSelect:hover {
     background-color: #FB7B48;
     color: #FFFF;
 }

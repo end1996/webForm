@@ -15,7 +15,7 @@ const MarcoCard = ({ nombre, selectedMarco, onMarcoClick }: MarcoProps) => {
     return (
         <PhotoProvider key={nombre}>
             <Card
-                className={`${styles.card} ${selectedMarco === `Card ${nombre}` ? styles.selected : ''}`}
+                className={`${styles.card} ${selectedMarco === `${nombre}` ? styles.selected : ''}`}
                 onClick={() => onMarcoClick(`${nombre}`)}
             >
                 <PhotoView src={`src/assets/marcos/marco-${nombre}.png`}>

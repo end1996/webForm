@@ -58,9 +58,8 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
     };
 
     const getBorderClass = () => {
-        const marcoIndex = selectedMarco ? parseInt(selectedMarco.split(' ')[1]) - 1 : -1;
         const sizeClass = selectedSize === '1.5 cm' ? 'marco1' : selectedSize === '2 cm' ? 'marco2' : selectedSize === '3 cm' ? 'marco3' : 'marco4';
-        return marcoIndex >= 0 ? `${styles[`marco${marcoIndex + 1}`]} ${styles[sizeClass]}` : '';
+        return selectedMarco ? `${styles[selectedMarco]} ${styles[sizeClass]}` : '';
     };
 
     return (
