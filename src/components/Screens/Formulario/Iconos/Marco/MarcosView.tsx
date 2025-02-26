@@ -1,6 +1,8 @@
 import { Card } from 'react-bootstrap';
 import { useState, useRef, useEffect } from 'react';
 import styles from './MarcosView.module.css';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 interface MarcoSelectedProps {
     selectedMarco: string;
@@ -49,19 +51,22 @@ const MarcosView = ({ selectedMarco, onMarcoClick, onSizeChange }: MarcoSelected
             </div>
             <div className={styles.marcosViewContainer}>
                 {cards.map((card, index) => (
-                    <Card
-                        key={index}
-                        className={`${styles.card} ${selectedMarco === `Card ${index + 1}` ? styles.selected : ''}`}
-                        onClick={() => onMarcoClick(`Card ${index + 1}`)}
-                    >
-                        <Card.Img
-                            className={styles.cardImg}
-                            variant="top"
-                            src={`src/assets/marcos/marco-${index + 1}.png`}
-                            height={150}
-                        />
-                        <Card.Body className={styles.cardBody}>{card}</Card.Body>
-                    </Card>
+                    <PhotoProvider key={index}>
+                        <Card
+                            className={`${styles.card} ${selectedMarco === `Card ${index + 1}` ? styles.selected : ''}`}
+                            onClick={() => onMarcoClick(`Card ${index + 1}`)}
+                        >
+                            <PhotoView src={`src/assets/marcos/marco-${index + 1}.png`}>
+                                <Card.Img
+                                    className={styles.cardImg}
+                                    variant="top"
+                                    src={`src/assets/marcos/marco-${index + 1}.png`}
+                                    height={150}
+                                />
+                            </PhotoView>
+                            <Card.Body className={styles.cardBody}>{card}</Card.Body>
+                        </Card>
+                    </PhotoProvider>
                 ))}
             </div>
         </div>

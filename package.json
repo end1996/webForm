@@ -20,6 +20,8 @@
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
+    "react-photo-view": "^1.2.7",
+    "react-viewerjs": "^0.1.9",
     "save-dev": "^0.0.1-security"
   },
   "devDependencies": {
