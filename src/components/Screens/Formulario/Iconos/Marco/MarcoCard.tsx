@@ -26,7 +26,7 @@ const MarcoCard = ({ nombre, selectedMarco, onMarcoClick }: MarcoProps) => {
                         height={150}
                     />
                 </PhotoView>
-                <Card.Body className={styles.cardBody}>{nombre}</Card.Body>
+                <Card.Body className={styles.cardBody}><label>{nombre}</label></Card.Body>
             </Card>
         </PhotoProvider>
     );

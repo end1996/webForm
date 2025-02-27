@@ -1,7 +1,7 @@
 import apiClient from "./apiClient";
 
 export interface Dimension {
-    id?: number;
+    id: number;
     alto: number;
     largo: number;
     tipo_medida?: boolean;

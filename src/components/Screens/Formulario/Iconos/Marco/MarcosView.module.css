@@ -49,11 +49,19 @@
 
 .cardBody {
   text-align: center;
+  background-color: #44A0AA;
 }
+
+.cardBody label {
+  color:#FFFF;
+  font-weight: 400;
+  cursor: pointer;
+}
+
 
 .cardImg {
   object-fit: contain;
-  padding-top: 10px;
+  padding: 10px 0 10px 0;
 }
 
 .cardImg:hover {
