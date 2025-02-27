@@ -40,10 +40,8 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
 
     // Cargar todas las imágenes de la carpeta src/assets/marcos
     const marcoImages = loadImages();
-    console.log(marcoImages)
 
     const getBorderImageStyle = (marcoName: string) => {
-        console.log(marcoName)
         const imageUrl = marcoImages[`marco-${marcoName}`];
         if (!imageUrl) {
             console.error(`Image not found for marcoName: ${marcoName}`);

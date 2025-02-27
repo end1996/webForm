@@ -1,6 +1,6 @@
-// Hook para obtener personajes
+// Hook para obtener marcos
 import {useQuery} from "@tanstack/react-query" // Importa el hook useQuery de la librería react-query
-import { fetchMarcos } from "../api/marcosApi"; // Importa la función fetchCharacters desde el archivo charactersApi
+import { fetchMarcos } from "../api/marcosApi"; // Importa la función fetchMarcos desde el archivo marcosApi
 
 export const useMarcos = () => {
     return useQuery({
