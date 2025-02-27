@@ -12,25 +12,29 @@ function Dimensiones() {
   };
 
   return (
-    <>
-      <div>
-        <p className={styles.textTitle}>Orientación</p>
-      </div>
+    <div className={styles.container}>
       <div className={styles.dimensionesContainer}>
-        <button
-          className={`${styles.orientationButton} ${orientation === 'horizontal' ? styles.selected : ''}`}
-          onClick={() => handleOrientationClick('horizontal')}
-        >
-          <FontAwesomeIcon icon={faArrowsLeftRight} /> Horizontal
-        </button>
-        <button
-          className={`${styles.orientationButton} ${orientation === 'vertical' ? styles.selected : ''}`}
-          onClick={() => handleOrientationClick('vertical')}
-        >
-          <FontAwesomeIcon icon={faArrowsUpDown} /> Vertical
-        </button>
+        <p className={styles.textTitle}>Orientación</p>
+        <div className={styles.orientationContainer}>
+          <button
+            className={`${styles.orientationButton} ${orientation === 'horizontal' ? styles.selected : ''}`}
+            onClick={() => handleOrientationClick('horizontal')}
+          >
+            <FontAwesomeIcon icon={faArrowsLeftRight} /> Horizontal
+          </button>
+          <button
+            className={`${styles.orientationButton} ${orientation === 'vertical' ? styles.selected : ''}`}
+            onClick={() => handleOrientationClick('vertical')}
+          >
+            <FontAwesomeIcon icon={faArrowsUpDown} /> Vertical
+          </button>
+        </div>
       </div>
-    </>
+      <div className={styles.cantidad}>
+        <p className={styles.textTitle}>Cantidad</p>
+        <input type='number' className={styles.inputCantidad}></input>
+      </div>
+    </div>
   );
 }
 

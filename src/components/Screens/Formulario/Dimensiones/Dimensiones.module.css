@@ -1,16 +1,46 @@
+.container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+    padding: 20px 0 20px 0;
+}
+
+.cantidad {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+}
+
+.inputCantidad {
+    width: 128px;
+    height: 46px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.inputCantidad:hover, .inputCantidad:focus {
+    border: 1px solid #FB7B48;
+    outline: none;
+}
+
 .textTitle {
     font-size: 20px;
     color: #44A0AA;
     font-weight: 600;
     line-height: 30px;
     font-family: "Lora", serif;
-    margin-top: 20px;
 }
 
 .dimensionesContainer {
-    display: flex;
-    gap: 12px;
-    padding-bottom: 20px;
+    display: grid;
+}
+
+.orientationContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .orientationButton {
@@ -27,3 +57,15 @@
     background-color: #FB7B48; /* Color para el botón seleccionado */
     color: #fff;
 } 
+
+@media (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cantidad {
+        padding-left: 0;
+        padding-top: 10px;
+    }
+}
