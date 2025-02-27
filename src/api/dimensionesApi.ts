@@ -9,6 +9,5 @@ export interface Dimension {
 }
 export const fetchDimensiones = async (): Promise<Dimension[]> => {
     const {data} = await apiClient.get<Dimension[]>("./dimensiones");
-    console.log(data)
     return data;
 }

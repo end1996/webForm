@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import styles from './Tamanios.module.css';
 import { DimensionContext } from '../../../../context/DimensionContext';
+import { TamanioGrid } from './TamanioGrid';
 
 function Tamanios() {
     const [selectedButton, setSelectedButton] = useState<string>('estandar'); // 'estandar' por defecto
@@ -47,17 +48,6 @@ function Tamanios() {
         setSelectedGridButton(gridButtonName);
         setSelectedDimension(gridButtonName);
     }
-
-    const dimensionesEstandar = [
-        '10 X 15', '13 X 18', '15 X 21', '20 X 25', '20 X 30', '20 X 40', '20 X 50', '20 X 60',
-        '25 X 30', '25 X 38', '25 X 40', '25 X 50', '25 X 60', '30 X 40', '30 X 45', '30 X 50', '30 X 60',
-    ];
-
-    const otrasMedidas = [
-        '40 X 50', '40 X 60', '50 X 60', '50 X 70', '60 X 80', '60 X 90', '60 X 100',
-    ];
-
-    const dimensiones = selectedButton === 'otros' ? otrasMedidas : dimensionesEstandar;
 
     return (
         <div className={styles.tamaniosContainer}>
@@ -119,15 +109,11 @@ function Tamanios() {
                     </div>
                 </div>
             ) : (
-                <div className={styles.gridDimensiones}>
-                    {dimensiones.map((dimension) => (
-                        <button key={dimension} className={`${styles.gridButton} ${selectedGridButton === dimension ? styles.selected : ''}`}
-                            onClick={() => handleGridElement(dimension)}
-                        >
-                            {dimension}
-                        </button>
-                    ))}
-                </div>
+                <TamanioGrid 
+                        handleGridElement={handleGridElement}
+                        selectedGridButton={selectedGridButton} 
+                        tipo_medida = {selectedButton === 'estandar'}>
+                </TamanioGrid>
             )}
         </div>
     );
