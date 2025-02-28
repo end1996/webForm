@@ -3,27 +3,28 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: auto;
-    padding: 20px 0 20px 0;
+    padding: 10px 0 20px 0;
 }
 
 .cantidad {
-    display: flex;
-    flex-direction: column;
     padding-left: 30px;
+    grid-template-columns: 1fr 1fr;
 }
 
-.inputCantidad {
-    width: 128px;
+.gridCounter {
+    display: flex;
+}
+
+.buttonCounter {
+    background-color: #FB7B48;
     height: 46px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 18px;
-    text-align: center;
-}
-
-.inputCantidad:hover, .inputCantidad:focus {
-    border: 1px solid #FB7B48;
-    outline: none;
+    width: 54px;
+    border-radius: 6px;
+    color: #FFFF;
+    border: 1px solid #D9D9D9;
+    font-size: 25px;
+    padding: 0;
+    font-weight: bold;
 }
 
 .textTitle {

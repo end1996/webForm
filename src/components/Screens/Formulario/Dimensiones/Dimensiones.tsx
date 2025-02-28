@@ -3,6 +3,8 @@ import styles from './Dimensiones.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowsLeftRight, faArrowsUpDown } from '@fortawesome/free-solid-svg-icons';
 import { OrientationContext } from '../../../../context/OrientationContext';
+import { Card, CardBody } from 'react-bootstrap';
+import { useCounterStore } from '../../../../stores/useCounter';
 
 function Dimensiones() {
   const { orientation, setOrientation } = useContext(OrientationContext);
@@ -32,10 +34,51 @@ function Dimensiones() {
       </div>
       <div className={styles.cantidad}>
         <p className={styles.textTitle}>Cantidad</p>
-        <input type='number' className={styles.inputCantidad}></input>
+        <div className={styles.gridCounter}>
+          <CardCounter />
+        </div>
       </div>
     </div>
   );
 }
 
 export default Dimensiones;
+
+export const CardCounter = () => {
+  const increaseCounter = useCounterStore(state => state.increaseCounter);
+  const countValue = useCounterStore(state => state.count);
+  const setCounter = useCounterStore((state) => state.setCounter);
+
+  return (
+    <>
+      <button
+        className={styles.buttonCounter}
+        onClick={() => increaseCounter(+1)}
+      >+</button>
+      <Card style={{ height: "46px", width: "70px", justifyContent: "center", alignItems: "center", fontWeight: "600" }}>
+        <CardBody>
+          <input
+            type="text"
+            value={countValue}
+            max={100}
+            onChange={(e) => setCounter(e.target.value)}
+            style={{
+              width: "100%",
+              height: "100%",
+              textAlign: "center",
+              fontWeight: "inherit",
+              border: "none",
+              background: "transparent",
+              outline: "none",
+            }}
+          />
+        </CardBody>
+      </Card>
+      <button
+        className={styles.buttonCounter}
+        style={{ backgroundColor: "#44A0AA" }}
+        onClick={() => `${countValue ? increaseCounter(-1) : ''}`}
+      >-</button>
+    </>
+  )
+}

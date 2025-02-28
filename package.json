@@ -22,7 +22,8 @@
     "react-dom": "^19.0.0",
     "react-photo-view": "^1.2.7",
     "react-viewerjs": "^0.1.9",
-    "save-dev": "^0.0.1-security"
+    "save-dev": "^0.0.1-security",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
