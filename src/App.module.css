@@ -20,7 +20,7 @@
     background-color: #E2E2E2;
     margin: auto;
     width: 900px; 
-    height: 850px;
+    height: calc(100vh - 77px);
     align-content: center
     
 }

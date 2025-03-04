@@ -22,9 +22,46 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
     let dimensions = { width: '0', height: '0' };
 
     if (selectedDimension) {
+        // Dividir la dimensión seleccionada en ancho y alto
         const [width, height] = selectedDimension.split(' X ').map(Number);
-        const scaleFactor = width > height ? 17 : 12;
-        frameSize = { width: `${width * scaleFactor}px`, height: `${height * scaleFactor}px` };
+
+        // Determina el tipo de dimensión (pequeña, mediana o grande)
+        const isSmallDimension = width <= 25 && height <= 30;
+        const isMediumDimension = (width > 25 && width <= 40) || (height > 30 && height <= 60);
+        const isLargeDimension = width > 40 || height > 60;
+
+        // Inicializa los factores de escala
+        let scaleFactor1 = 1, scaleFactor2 = 1;
+
+        // Ajusta los factores de escala según el tipo de dimensión
+        if (isSmallDimension) {
+            scaleFactor1 = width > height ? 25 : 20;
+            scaleFactor2 = width > height ? 20 : 25;
+        } else if (isMediumDimension) {
+            scaleFactor1 = width > height ? 17 : 12;
+            scaleFactor2 = width > height ? 12 : 17;
+        } else if (isLargeDimension) {
+            scaleFactor1 = width > height ? 10 : 7.6;
+            scaleFactor2 = width > height ? 8 : 10;
+        }
+
+        // Calcula las dimensiones en píxeles usando el primer factor de escala
+        const widthPx1 = width * scaleFactor1;
+        const heightPx1 = height * scaleFactor1;
+
+        // Calcula las dimensiones en píxeles usando el segundo factor de escala
+        const widthPx2 = width * scaleFactor2;
+        const heightPx2 = height * scaleFactor2;
+
+        // Usa el primer factor de escala para dimensiones verticales
+        frameSize = { width: `${widthPx1}px`, height: `${heightPx1}px` };
+
+        // Usa el segundo factor de escala para dimensiones horizontales
+        if (width > height) {
+            frameSize = { width: `${widthPx2}px`, height: `${heightPx2}px` };
+        }
+
+        // Establece las dimensiones en centímetros
         dimensions = { width: `${width}`, height: `${height}` };
     }
 
