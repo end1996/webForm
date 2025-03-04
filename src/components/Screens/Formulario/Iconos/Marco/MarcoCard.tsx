@@ -6,7 +6,7 @@ import 'react-photo-view/dist/react-photo-view.css';
 export type MarcoProps = {
     id?: number;
     nombre: string;
-    estado?: boolean;
+    estado: boolean;
     selectedMarco: string;
     onMarcoClick: (marcoName: string) => void;
 };
