@@ -1,16 +1,17 @@
-import { useContext } from 'react';
 import styles from './Dimensiones.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowsLeftRight, faArrowsUpDown } from '@fortawesome/free-solid-svg-icons';
-import { OrientationContext } from '../../../../context/OrientationContext';
 import { Card, CardBody } from 'react-bootstrap';
-import { useCounterStore } from '../../../../stores/useCounter';
+import { useOrientationStore } from '../../../../stores/orientations.store';
+import { useCounterStore } from '../../../../stores/counter.store';
 
 function Dimensiones() {
-  const { orientation, setOrientation } = useContext(OrientationContext);
+
+  const { orientation, setOrientation } = useOrientationStore(); // Usamos el store global de Zustand
 
   const handleOrientationClick = (newOrientation: string) => {
     setOrientation(newOrientation);
+    console.log(newOrientation)
   };
 
   return (
@@ -53,8 +54,9 @@ export const CardCounter = () => {
     <>
       <button
         className={styles.buttonCounter}
-        onClick={() => increaseCounter(+1)}
-      >+</button>
+        style={{ backgroundColor: "#44A0AA" }}
+        onClick={() => `${countValue ? increaseCounter(-1) : ''}`}
+      >-</button>
       <Card style={{ height: "46px", width: "70px", justifyContent: "center", alignItems: "center", fontWeight: "600" }}>
         <CardBody>
           <input
@@ -76,9 +78,8 @@ export const CardCounter = () => {
       </Card>
       <button
         className={styles.buttonCounter}
-        style={{ backgroundColor: "#44A0AA" }}
-        onClick={() => `${countValue ? increaseCounter(-1) : ''}`}
-      >-</button>
+        onClick={() => increaseCounter(+1)}
+      >+</button>
     </>
   )
 }

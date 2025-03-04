@@ -1,16 +1,24 @@
-import { useState, useContext } from 'react';
 import styles from './Tamanios.module.css';
-import { DimensionContext } from '../../../../context/DimensionContext';
 import { TamanioGrid } from './TamanioGrid';
+import { useTamanioStore } from '../../../../stores/tamanio.store';
+
 
 function Tamanios() {
-    const [selectedButton, setSelectedButton] = useState<string>('estandar'); // 'estandar' por defecto
-    const [customWidth, setCustomWidth] = useState<string>('');
-    const [customHeight, setCustomHeight] = useState<string>('');
-    const [widthError, setWidthError] = useState<string>('');
-    const [heightError, setHeightError] = useState<string>('');
-    const [selectedGridButton, setSelectedGridButton] = useState<string>('');
-    const { setSelectedDimension } = useContext(DimensionContext);
+    const {
+        selectedButton,
+        customWidth,
+        customHeight,
+        widthError,
+        heightError,
+        selectedGridButton,
+        setSelectedButton,
+        setCustomWidth,
+        setCustomHeight,
+        setWidthError,
+        setHeightError,
+        setSelectedGridButton,
+        setSelectedDimension
+    } = useTamanioStore();
 
     const handleButtonClick = (buttonName: string) => {
         setSelectedButton(buttonName);

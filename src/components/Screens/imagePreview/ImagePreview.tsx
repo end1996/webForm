@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect} from 'react';
 import styles from './ImagePreview.module.css';
 import defaultImage from '../../../assets/arte.jpg';
-import { DimensionContext } from '../../../context/DimensionContext';
 import { loadImages } from './loadImages';
+import { useTamanioStore } from '../../../stores/tamanio.store';
 
 interface ImagePreviewProps {
     selectedButton: string;
@@ -12,7 +12,8 @@ interface ImagePreviewProps {
 
 const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMarco, selectedSize }) => {
     const [imageSrc, setImageSrc] = useState<string | null>(defaultImage);
-    const { selectedDimension } = useContext(DimensionContext);
+    const selectedDimension = useTamanioStore((state) => state.selectedDimension);
+    console.log(selectedDimension)
     const [frameSize, setFrameSize] = useState({ width: '100%', height: '80vh' });
     const [dimensions, setDimensions] = useState({ width: '0', height: '0' });
 
@@ -83,6 +84,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
                                     style={selectedMarco ? getBorderImageStyle(selectedMarco): {}}
                                 />
                             )}
+
                         </div>
                     </div>
                 </div>

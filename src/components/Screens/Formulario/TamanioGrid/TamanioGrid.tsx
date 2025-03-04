@@ -16,9 +16,9 @@ export const TamanioGrid: React.FC<TamanioGridProps> = ({ selectedGridButton, ha
 
     // Verifica que data sea un array filtrado por tipo de medida
     const dimensiones = Array.isArray(data) ? data.filter(d => d.tipo_medida === tipo_medida) as Dimension[] : [];
-
     return (
         <div className={styles.gridDimensiones}>
+            
             {dimensiones.map((dimensiones: Dimension) => (
                 <TamanioCard
                     key={dimensiones.id}
