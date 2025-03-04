@@ -16,7 +16,7 @@ import Tamanios from "./components/Screens/Formulario/TamanioGrid/Tamanios";
 function App() {
   // Zustand: Estados globales
   const {
-    selectedButton, selectedMarco, selectedSize, imagenSeleccionada, activeView,
+    selectedButton, selectedMarco, selectedSize, imageSrc, activeView,
     setSelectedButton, setSelectedMarco, setSelectedSize, setActiveView,
   } = useAppStore();
 
@@ -33,12 +33,12 @@ function App() {
   // Componente de contenido principal
   const MainContent = () => (
     <>
-      <SubirImagen />
+      {<SubirImagen />}
       <BotonesEnmarcado selectedButton={selectedButton} onButtonClick={handleButtonClick} />
       <Dimensiones />
       {orientation === 'horizontal' ? <TamaniosHorizontal /> : <Tamanios />}
       <TextInputContainer />
-      <AgregarAlCarro selectedMarco={selectedMarco} selectedSize={selectedSize} imagen={imagenSeleccionada} />
+      <AgregarAlCarro selectedMarco={selectedMarco} selectedSize={selectedSize} imageSrc={imageSrc} />
     </>
   );
 
@@ -55,7 +55,7 @@ function App() {
           {activeView === 'marcos' && (
             <>
               <MarcosView selectedMarco={selectedMarco} onMarcoClick={handleMarcoChange} onSizeChange={handleSizeChange} />
-              <AgregarAlCarro selectedMarco={selectedMarco} selectedSize={selectedSize} imagen={imagenSeleccionada} />
+              <AgregarAlCarro selectedMarco={selectedMarco} selectedSize={selectedSize} imageSrc={imageSrc} />
             </>
           )}
         </div>

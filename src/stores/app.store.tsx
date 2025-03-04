@@ -4,7 +4,7 @@ interface AppState {
   selectedButton: string;
   selectedMarco: string;
   selectedSize: string;
-  imagenSeleccionada: string;
+  imageSrc: string | null;
   selectedDimension: string;
   activeView: string; // Agregado para manejar la vista activa
 
@@ -20,7 +20,7 @@ export const useAppStore = create<AppState>((set) => ({
   selectedButton: "soloImpresion",
   selectedMarco: "",
   selectedSize: "1.5 cm",
-  imagenSeleccionada: "",
+  imageSrc: null,
   selectedDimension: "",
   activeView: "main", // Vista inicial por defecto
 
@@ -31,7 +31,10 @@ export const useAppStore = create<AppState>((set) => ({
     })),
   setSelectedMarco: (marco) => set({ selectedMarco: marco }),
   setSelectedSize: (size) => set({ selectedSize: size }),
-  setImagenSeleccionada: (imagen) => set({ imagenSeleccionada: imagen }),
+  setImagenSeleccionada: (imagen) => {
+    
+    set({ imageSrc: imagen })
+  },
   setSelectedDimension: (dimension) => set({ selectedDimension: dimension }),
   setActiveView: (view) => set({ activeView: view }), // Función para cambiar la vista activa
 }));
