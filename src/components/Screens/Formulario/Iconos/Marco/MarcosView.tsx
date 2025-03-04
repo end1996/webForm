@@ -21,7 +21,8 @@ const MarcosView = ({ selectedMarco, onMarcoClick, onSizeChange }: MarcoSelected
     useEffect(() => {
         function handleClickOutside(e: Event) {
             if (ref.current && !ref.current.contains(e.target as Node)) {
-                onMarcoClick('');
+                // Evitamos borrar el marco seleccionado
+                onMarcoClick(selectedMarco);
             }
         }
 
@@ -29,7 +30,7 @@ const MarcosView = ({ selectedMarco, onMarcoClick, onSizeChange }: MarcoSelected
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [ref, onMarcoClick]);
+    }, [ref, selectedMarco, onMarcoClick]);
 
     const handleSizeClick = (size: string) => {
         setSelectedSize(size);
@@ -51,7 +52,7 @@ const MarcosView = ({ selectedMarco, onMarcoClick, onSizeChange }: MarcoSelected
                 ))}
             </div>
             <div>
-                <MarcosList selectedMarco={selectedMarco} onMarcoClick={onMarcoClick} />
+                <MarcosList selectedMarco={selectedMarco} onMarcoClick={onMarcoClick} estado={false} />
             </div>
         </div>
     );

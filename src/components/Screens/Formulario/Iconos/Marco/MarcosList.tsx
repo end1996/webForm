@@ -5,6 +5,7 @@ import styles from "./MarcosView.module.css"
 
 interface MarcosListProps {
     selectedMarco: string;
+    estado: boolean;
     onMarcoClick: (marcoName: string) => void;
 }
 
@@ -15,7 +16,7 @@ const MarcosList = ({ selectedMarco, onMarcoClick }: MarcosListProps) => {
     if (error) return <p>Error al cargar los marcos</p>;
 
     // Verifica que data sea un array
-    const marcos = Array.isArray(data) ? data as MarcoProps[] : [];
+    const marcos = Array.isArray(data) ? data.filter(d => d.estado) as MarcoProps[] : [];
 
     return (
         <div className={styles.marcosViewContainer}>
@@ -26,6 +27,7 @@ const MarcosList = ({ selectedMarco, onMarcoClick }: MarcosListProps) => {
                     nombre={marco.nombre}
                     selectedMarco={selectedMarco}
                     onMarcoClick={onMarcoClick}
+                    estado={marco.estado}
                 />
             ))}
         </div>
