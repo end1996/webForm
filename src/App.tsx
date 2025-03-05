@@ -38,7 +38,7 @@ function App() {
       <Dimensiones />
       {orientation === 'horizontal' ? <TamaniosHorizontal /> : <Tamanios />}
       <TextInputContainer />
-      <AgregarAlCarro selectedMarco={selectedMarco} selectedSize={selectedSize} imageSrc={imageSrc} />
+      <AgregarAlCarro selectedMarco={selectedMarco} selectedSize={selectedSize} imageSrc={imageSrc} id={0}/>
     </>
   );
 
@@ -55,7 +55,7 @@ function App() {
           {activeView === 'marcos' && (
             <>
               <MarcosView selectedMarco={selectedMarco} onMarcoClick={handleMarcoChange} onSizeChange={handleSizeChange} />
-              <AgregarAlCarro selectedMarco={selectedMarco} selectedSize={selectedSize} imageSrc={imageSrc} />
+              <AgregarAlCarro selectedMarco={selectedMarco} selectedSize={selectedSize} imageSrc={imageSrc} id={0}/>
             </>
           )}
         </div>

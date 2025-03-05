@@ -1,18 +1,14 @@
-import { useState, useEffect } from "react";
+import useComentarioStore from "../../../../stores/comentario.store";
 import styles from "./TextInputComentarios.module.css";
 
 const TextInputComentarios: React.FC = () => {
-    const [comentario, setComentario] = useState<string>("");
-    const [comentarios, setComentarios] = useState<string[]>(() => {
-        const datosGuardados = localStorage.getItem("comentarios");
-        return datosGuardados ? JSON.parse(datosGuardados) : [];
-    });
-
-    const [mensaje, setMensaje] = useState<string>("");
-
-    useEffect(() => {
-        localStorage.setItem("comentarios", JSON.stringify(comentarios));
-    }, [comentarios]);
+    const {
+        comentario,
+        mensaje,
+        setComentario,
+        agregarComentario,
+        setMensaje,
+    } = useComentarioStore();
 
     const manejarCambio = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setComentario(e.target.value);
@@ -20,18 +16,12 @@ const TextInputComentarios: React.FC = () => {
 
     const manejarEnvio = (e: React.FormEvent) => {
         e.preventDefault();
-        if (comentario.trim() !== "") {
-            setComentarios([...comentarios, comentario]);
-            setComentario("");
-            setMensaje("✅ Comentario guardado exitosamente");
-
-            console.log("Comentario guardado:", comentario); // Muestra en la consola
+        agregarComentario();
 
             // Ocultar el mensaje después de 3 segundos
             setTimeout(() => {
                 setMensaje("");
             }, 3000);
-        }
     };
 
     return (

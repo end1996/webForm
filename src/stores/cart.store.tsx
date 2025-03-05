@@ -1,17 +1,27 @@
 import { create } from "zustand";
 
 // Definimos la estructura de un item en el carrito
-interface CartItem {
+export interface CartItem {
   id: number;
+  cantidad: number;
   imageSrc: string | null;
-  size: string;
+  dimension_foto: string;
   frame: string | null;
+  comentario: string;
 }
 
 // Definimos el estado global del carrito
 interface CartState {
   cart: CartItem[];
-  addToCart: (image: string | null, size: string, frame: string | null) => void;
+  addToCart: (
+    id: number, 
+    cantidad: number, 
+    image: string | null, 
+    dimension_foto: string,
+    size: string, 
+    frame: string | null,
+    comentario: string,
+  ) => void;
   removeFromCart: (id: number) => void;
   clearCart: () => void;
 }
@@ -20,12 +30,13 @@ interface CartState {
 export const useCartStore = create<CartState>((set) => ({
   cart: [],
 
-  addToCart: (imageSrc, size, frame) =>
+  addToCart: (id, cantidad, imageSrc, dimension_foto, size, frame, comentario) =>
     set((state) => {
-      const newItem = { id: Date.now(), imageSrc, size, frame };
+      const newItem = { id, cantidad, imageSrc, dimension_foto, size, frame, comentario};
       const newCart = [...state.cart, newItem];
-      {console.log("🛒 Item agregado:", newItem);
-      console.log("📦 Estado del carrito después de agregar:", newCart);}
+      console.log("🛒 Item agregado:", newItem);
+      console.log("📦 Estado del carrito después de agregar:", newCart);
+
       return { cart: newCart };
     }),
 
