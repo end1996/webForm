@@ -68,9 +68,13 @@
     border-radius: 10px;
 }
 
-.gridButton.selected, .gridButton:hover {
+.gridButton.selected, .gridButton:hover, .gridButton:active {
     background-color: #FB7B48;
     color: #FFFF;
+}
+
+.gridButton:focus {
+    outline: none;
 }
 
 .customSizeContainer {

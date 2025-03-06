@@ -4,7 +4,7 @@ import styles from './Tamanios.module.css'
 
 interface TamanioGridProps {
     selectedGridButton: string;
-    handleGridElement: (gridButtonName: string) => void;
+    handleGridElement: ( gridDimensiones: string, gridId: number ) => void;
     tipo_medida: boolean;
 }
 

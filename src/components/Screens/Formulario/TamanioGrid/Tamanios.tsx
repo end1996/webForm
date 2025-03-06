@@ -1,6 +1,7 @@
 import styles from './Tamanios.module.css';
 import { TamanioGrid } from './TamanioGrid';
 import { useTamanioStore } from '../../../../stores/tamanio.store';
+import { useEffect } from 'react';
 
 
 function Tamanios() {
@@ -22,40 +23,76 @@ function Tamanios() {
 
     const handleButtonClick = (buttonName: string) => {
         setSelectedButton(buttonName);
+        if (buttonName === "personalizado") {
+            // Si ya hay valores previos, los mantiene
+            if (!customWidth) setCustomWidth("10");
+            if (!customHeight) setCustomHeight("15");
+
+            setSelectedDimension(`${customWidth || "10"} X ${customHeight || "15"}`);
+        } else {
+            // Si elige otro tamaño estándar, restablecer dimensiones a su opción
+            setSelectedDimension(buttonName);
+        }
     };
 
     const handleWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setCustomWidth(value);
+
         if (Number(value) < 10) {
             setWidthError('El ancho mínimo es de 10 cm');
         } else if (Number(value) > 60) {
             setWidthError('El ancho máximo es de 60 cm');
-        }
-        else {
+        } else {
             setWidthError('');
         }
-        setSelectedDimension(`${value} X ${customHeight}`);
     };
 
     const handleHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setCustomHeight(value);
+
         if (Number(value) < 15) {
             setHeightError('El alto mínimo es de 15 cm');
         } else if (Number(value) > 100) {
             setHeightError('El alto máximo es de 100 cm');
-        }
-        else {
+        } else {
             setHeightError('');
         }
-        setSelectedDimension(`${customWidth} X ${value}`);
     };
 
-    const handleGridElement = (gridButtonName: string) => {
-        setSelectedGridButton(gridButtonName);
-        setSelectedDimension(gridButtonName);
-    }
+    const handleGridElement = (dimensiones: string, id: number) => {
+        setSelectedGridButton(String(id));
+        setSelectedDimension(dimensiones);
+    };
+
+    // ✅ Actualiza la dimensión cuando se escriben valores personalizados
+    useEffect(() => {
+        if (selectedButton === "personalizado") {
+            setSelectedDimension(`${customWidth} X ${customHeight}`);
+        }
+    }, [customWidth, customHeight]);
+
+    // ✅ Selecciona automáticamente el primer botón del grid cuando cambia `selectedButton`
+    useEffect(() => {
+
+        let newGridButton = "1"; // Por defecto, el primer botón para "estandar"
+        let newDimension = "10 X 15"; // Dimensión por defecto
+
+        if (selectedButton === "personalizado") {
+            newGridButton = "2";
+            newDimension = `${customWidth} X ${customHeight}`;
+        } else if (selectedButton !== "estandar") {
+            newGridButton = "18";
+            newDimension = "40 X 50"; // 
+        }
+
+        setSelectedGridButton(newGridButton);
+        setSelectedDimension(newDimension);
+
+    }, [selectedButton, customWidth, customHeight]);
+
+
 
     return (
         <div className={styles.tamaniosContainer}>
@@ -117,11 +154,13 @@ function Tamanios() {
                     </div>
                 </div>
             ) : (
-                <TamanioGrid 
+                <div style={{ display: selectedButton === 'personalizado' ? 'none' : 'block' }}>
+                    <TamanioGrid
                         handleGridElement={handleGridElement}
-                        selectedGridButton={selectedGridButton} 
-                        tipo_medida = {selectedButton === 'estandar'}>
-                </TamanioGrid>
+                        selectedGridButton={selectedGridButton}
+                        tipo_medida={selectedButton === 'estandar'}
+                    />
+                </div>
             )}
         </div>
     );
