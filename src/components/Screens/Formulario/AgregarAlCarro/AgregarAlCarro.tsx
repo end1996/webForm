@@ -11,9 +11,10 @@ interface AgregarAlCarroProps {
     selectedSize: string;
     selectedMarco: string;
     precio_monto: number;
+    toggleDrawer: (newOpen: boolean) => (event?: React.KeyboardEvent | React.MouseEvent) => void; // ✅ Añadimos esta prop
 }
 
-export const AgregarAlCarro: React.FC<AgregarAlCarroProps> = ({ id, imageSrc, selectedSize, selectedMarco, precio_monto }) => {
+export const AgregarAlCarro: React.FC<AgregarAlCarroProps> = ({ id, imageSrc, selectedSize, selectedMarco, precio_monto, toggleDrawer }) => {
     const addToCart = useCartStore((state) => state.addToCart);
     const cantidad = useCounterStore(state => state.count);
     const dimension_foto = useTamanioStore(state => state.selectedDimension)
@@ -32,7 +33,6 @@ export const AgregarAlCarro: React.FC<AgregarAlCarroProps> = ({ id, imageSrc, se
         if (!dimension_marco && selectedButton === 'enmarcacionImpresion') {
             alert("Si desea enmarcado seleccione la medida, de lo contrario seleccione 'Sólo impresión'")
         } else {
-
             addToCart(
                 id,
                 cantidad,
@@ -45,8 +45,8 @@ export const AgregarAlCarro: React.FC<AgregarAlCarroProps> = ({ id, imageSrc, se
                 comentario,
             );
             limpiarComentarios();
-
             alert("Producto agregado al carrito!");
+            toggleDrawer(true)(); // ✅ Abrimos el Drawer
         }
     };
 
@@ -56,5 +56,5 @@ export const AgregarAlCarro: React.FC<AgregarAlCarroProps> = ({ id, imageSrc, se
                 Agregar al carro
             </button>
         </div>
-    );
+    );  
 };

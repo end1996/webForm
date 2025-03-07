@@ -12,8 +12,20 @@ import { AgregarAlCarro } from "./components/Screens/Formulario/AgregarAlCarro/A
 import { useAppStore } from "./stores/app.store";
 import { useOrientationStore } from "./stores/orientations.store";
 import Tamanios from "./components/Screens/Formulario/TamanioGrid/Tamanios";
+import { useState } from "react";
+import TemporaryDrawer from "./components/app-sidebar";
 
 function App() {
+  // Estado para controlar el Drawer
+  const [open, setOpen] = useState<boolean>(false);
+
+  const toggleDrawer = (newOpen: boolean) => (event?: React.KeyboardEvent | React.MouseEvent) => {
+    if (event && event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
+      return;
+    }
+    setOpen(newOpen);
+  };
+
   // Zustand: Estados globales
   const {
     selectedButton, selectedMarco, selectedSize, imageSrc, activeView,
@@ -38,7 +50,14 @@ function App() {
       <Dimensiones />
       {orientation === 'horizontal' ? <TamaniosHorizontal /> : <Tamanios />}
       <TextInputContainer />
-      <AgregarAlCarro selectedMarco={selectedMarco} selectedSize={selectedSize} imageSrc={imageSrc} id={0}/>
+      <AgregarAlCarro
+        selectedMarco={selectedMarco}
+        selectedSize={selectedSize}
+        imageSrc={imageSrc}
+        id={0}
+        precio_monto={0}
+        toggleDrawer={toggleDrawer}
+      />
     </>
   );
 
@@ -54,12 +73,20 @@ function App() {
           {activeView === 'main' && <MainContent />}
           {activeView === 'marcos' && (
             <>
-              <MarcosView selectedMarco={selectedMarco} onMarcoClick={handleMarcoChange} onSizeChange={handleSizeChange} />
-              <AgregarAlCarro selectedMarco={selectedMarco} selectedSize={selectedSize} imageSrc={imageSrc} id={0}/>
+              <MarcosView onMarcoClick={handleMarcoChange} onSizeChange={handleSizeChange} />
+              <AgregarAlCarro
+                selectedMarco={selectedMarco}
+                selectedSize={selectedSize}
+                imageSrc={imageSrc}
+                id={0}
+                precio_monto={0}
+                toggleDrawer={toggleDrawer}
+              />
             </>
           )}
         </div>
       </div>
+      <TemporaryDrawer open={open} toggleDrawer={toggleDrawer} />
     </div>
   );
 }

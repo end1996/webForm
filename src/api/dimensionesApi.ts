@@ -8,6 +8,6 @@ export interface Dimension {
     precio?: number;
 }
 export const fetchDimensiones = async (): Promise<Dimension[]> => {
-    const {data} = await apiClient.get<Dimension[]>("./dimensiones");
+    const {data} = await apiClient.get<Dimension[]>("public/dimensiones");
     return data;
 }
