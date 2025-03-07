@@ -1,22 +1,25 @@
 //import { Card } from 'react-bootstrap';
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import styles from './MarcosView.module.css';
 //import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import MarcosList from './MarcosList';
+import { useAppStore } from '../../../../../stores/app.store';
 
 interface MarcoSelectedProps {
-    selectedMarco: string;
     onMarcoClick: (marcoName: string) => void;
     onSizeChange: (size: string) => void;
 }
 
-const MarcosView = ({ selectedMarco, onMarcoClick, onSizeChange }: MarcoSelectedProps) => {
+const MarcosView = ({ onMarcoClick, onSizeChange }: MarcoSelectedProps) => {
     //const cards = Array.from({ length: 12 }, (_, index) => `Card ${index + 1}`);
     const ref = useRef<HTMLDivElement>(null);
     const marcoSize = ['1.5 cm', '2 cm', '3 cm'];
+    const selectedMarco = useAppStore(state => state.selectedMarco);
+    const selectedSize = useAppStore(state => state.selectedSize);
+    const setSelectedSize = useAppStore(state => state.setSelectedSize);
 
-    const [selectedSize, setSelectedSize] = useState<string>(marcoSize[1]); // Tamaño de marco de 2cm por defecto
+    console.log(selectedSize)
 
     useEffect(() => {
         function handleClickOutside(e: Event) {

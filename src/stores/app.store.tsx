@@ -19,7 +19,7 @@ interface AppState {
 export const useAppStore = create<AppState>((set) => ({
   selectedButton: "soloImpresion",
   selectedMarco: "",
-  selectedSize: "1.5 cm",
+  selectedSize: "",
   imageSrc: null,
   selectedDimension: "",
   activeView: "main", // Vista inicial por defecto

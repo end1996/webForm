@@ -6,7 +6,9 @@ export interface CartItem {
   cantidad: number;
   imageSrc: string | null;
   dimension_foto: string;
-  frame: string | null;
+  marco: string | null;
+  dimension_marco: string;
+  precio_monto: number;
   comentario: string;
 }
 
@@ -14,12 +16,15 @@ export interface CartItem {
 interface CartState {
   cart: CartItem[];
   addToCart: (
-    id: number, 
-    cantidad: number, 
-    image: string | null, 
+    id: number,
+    cantidad: number,
+    image: string | null,
     dimension_foto: string,
-    size: string, 
-    frame: string | null,
+    size: string,
+    marco: string | null,
+    dimension_marco: string,
+    precio_monto: number,
+    /*precio_envio: number,*/
     comentario: string,
   ) => void;
   removeFromCart: (id: number) => void;
@@ -30,9 +35,9 @@ interface CartState {
 export const useCartStore = create<CartState>((set) => ({
   cart: [],
 
-  addToCart: (id, cantidad, imageSrc, dimension_foto, size, frame, comentario) =>
+  addToCart: (id, cantidad, imageSrc, dimension_foto, size, marco, dimension_marco, precio_monto, comentario) =>
     set((state) => {
-      const newItem = { id, cantidad, imageSrc, dimension_foto, size, frame, comentario};
+      const newItem = { id, cantidad, imageSrc, dimension_foto, size, marco, dimension_marco, precio_monto, comentario };
       const newCart = [...state.cart, newItem];
       console.log("🛒 Item agregado:", newItem);
       console.log("📦 Estado del carrito después de agregar:", newCart);
@@ -40,19 +45,19 @@ export const useCartStore = create<CartState>((set) => ({
       return { cart: newCart };
     }),
 
-    removeFromCart: (id) =>
-      set((state) => {
-        const newCart = state.cart.filter((item) => item.id !== id);
-        console.log(`🗑️ Item con ID ${id} eliminado`);
-        console.log("📦 Estado del carrito después de eliminar:", newCart);
-        return { cart: newCart };
-      }),
-  
-    clearCart: () =>
-      set(() => {
-        console.log("🧹 Carrito vaciado");
-        return { cart: [] };
-      }),
+  removeFromCart: (id) =>
+    set((state) => {
+      const newCart = state.cart.filter((item) => item.id !== id);
+      console.log(`🗑️ Item con ID ${id} eliminado`);
+      console.log("📦 Estado del carrito después de eliminar:", newCart);
+      return { cart: newCart };
+    }),
+
+  clearCart: () =>
+    set(() => {
+      console.log("🧹 Carrito vaciado");
+      return { cart: [] };
+    }),
 }));
 
 
