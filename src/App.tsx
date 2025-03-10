@@ -32,7 +32,7 @@ function App() {
     setSelectedButton, setSelectedMarco, setSelectedSize, setActiveView,
   } = useAppStore();
 
-  const { orientation } = useOrientationStore();
+  {/*const { orientation } = useOrientationStore();*/}
 
   // Manejar cambios de vista
   const handleIconClick = (view: string) => setActiveView(view);
@@ -48,7 +48,8 @@ function App() {
       {<SubirImagen />}
       <BotonesEnmarcado selectedButton={selectedButton} onButtonClick={handleButtonClick} />
       <Dimensiones />
-      {orientation === 'horizontal' ? <TamaniosHorizontal /> : <Tamanios />}
+      {/*orientation === 'horizontal' ? <TamaniosHorizontal /> : <Tamanios />*/}
+      <Tamanios />
       <TextInputContainer />
       <AgregarAlCarro
         selectedMarco={selectedMarco}
