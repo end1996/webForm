@@ -2,6 +2,7 @@ import { Card } from 'react-bootstrap';
 import styles from './MarcosView.module.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { loadImages } from '@/components/Screens/imagePreview/loadImages';
 
 export type MarcoProps = {
     id?: number;
@@ -12,17 +13,20 @@ export type MarcoProps = {
 };
 
 const MarcoCard = ({ nombre, selectedMarco, onMarcoClick }: MarcoProps) => {
+    const marcoImages = loadImages();
+    const imageUrl = marcoImages[`marco-${nombre}`]
+    console.log(imageUrl)
     return (
         <PhotoProvider key={nombre}>
             <Card
                 className={`${styles.card} ${selectedMarco === `${nombre}` ? styles.selected : ''}`}
                 onClick={() => onMarcoClick(`${nombre}`)}
             >
-                <PhotoView src={`src/assets/marcos/marco-${nombre}.png`}>
+                <PhotoView src={imageUrl}>
                     <Card.Img
                         className={styles.cardImg}
                         variant="top"
-                        src={`src/assets/marcos/marco-${nombre}.png`}
+                        src={imageUrl}
                         height={150}
                     />
                 </PhotoView>

@@ -1,10 +1,12 @@
+import imagen from '../assets/arteIdeas.jpg';
+
 function Header() {
     // Cambiar className por className
     return (
         <nav className="navbar navbar-expand-lg bg-white">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
-                    <img src="src/assets/arteIdeas.jpg" alt="ArteIdeas" width={134} height={51} />
+                    <img src={imagen} alt="ArteIdeas" width={134} height={51} />
                 </a>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">

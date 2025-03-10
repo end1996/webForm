@@ -47,10 +47,8 @@
 .cardImg {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    display: block;
-    margin: 0;
-    border: 1px solid transparent; /*Margen claro solo para remarcar imagen*/
+    object-fit: cover;
+    border: 50px solid transparent; /* Evita que se superpongan los estilos */
 }
 
 .fileInput {
@@ -59,19 +57,22 @@
 
 /* Estilos comunes para los marcos */
 .marco {
-    border: 76px solid transparent;
+    border-width: 100px;
+    border-style: solid;
+    border-image-slice: 100;
+    border-image-repeat: round;
 }
 
 .marco1 {
-    border-width: 57px;
+    border-width: 60px;
 }
 
 .marco2 {
-    border-width: 76px;
+    border-width: 70px;
 }
 
 .marco3 {
-    border-width: 113px;
+    border-width: 80px;
 }
 
 @media (max-width: 1280px ){
@@ -95,6 +96,24 @@
 
     .marco3 {
         border-width: 63px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cardContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        max-width: 90vw;
+        max-height: 70vh;
+    }
+
+    .cardImg {
+        max-width: 100%;
+        height: auto;
     }
 }
 
