@@ -7,10 +7,8 @@ import TextInputContainer from "./components/Screens/Formulario/TextInput/TextIn
 import styles from './App.module.css';
 import MarcosView from "./components/Screens/Formulario/Iconos/Marco/MarcosView";
 import Dimensiones from "./components/Screens/Formulario/Dimensiones/Dimensiones";
-import TamaniosHorizontal from "./components/Screens/Formulario/TamaniosHorizontalGrid/TamaniosHorizontal";
 import { AgregarAlCarro } from "./components/Screens/Formulario/AgregarAlCarro/AgregarAlCarro";
 import { useAppStore } from "./stores/app.store";
-import { useOrientationStore } from "./stores/orientations.store";
 import Tamanios from "./components/Screens/Formulario/TamanioGrid/Tamanios";
 import { useState } from "react";
 import TemporaryDrawer from "./components/app-sidebar";
