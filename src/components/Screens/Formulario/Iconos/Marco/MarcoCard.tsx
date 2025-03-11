@@ -15,7 +15,6 @@ export type MarcoProps = {
 const MarcoCard = ({ nombre, selectedMarco, onMarcoClick }: MarcoProps) => {
     const marcoImages = loadImages();
     const imageUrl = marcoImages[`marco-${nombre}`]
-    console.log(imageUrl)
     return (
         <PhotoProvider key={nombre}>
             <Card

@@ -25,7 +25,6 @@ export const AgregarAlCarro: React.FC<AgregarAlCarroProps> = ({ id, imageSrc, se
     const comentario = comentarios.length > 0 ? comentarios[comentarios.length - 1] : "";
 
     const handleAddToCart = () => {
-        console.log("📦 Comentarios en localStorage:", comentario);
         if (!imageSrc || !dimension_foto) {
             alert("Por favor, selecciona una imagen y el tamaño deseado antes de agregar al carrito.");
             return;

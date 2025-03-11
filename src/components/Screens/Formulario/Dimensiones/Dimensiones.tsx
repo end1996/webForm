@@ -11,7 +11,6 @@ function Dimensiones() {
 
   const handleOrientationClick = (newOrientation: string) => {
     setOrientation(newOrientation);
-    {/*console.log(newOrientation)*/}
   };
 
   return (

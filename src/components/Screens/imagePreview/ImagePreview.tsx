@@ -82,6 +82,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
                 setBorderStyle({
                     borderImage: `url(${marcoUrl}) ${borderSize} round`,
                     borderImageSlice: borderSize,
+                    borderImageOutset: 2, // Esto hará que el marco quede por fuera
                 });
             } else {
                 setBorderStyle({});

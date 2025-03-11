@@ -12,7 +12,6 @@ interface TamanioGridProps {
 export const TamanioGrid: React.FC<TamanioGridProps> = ({ selectedGridButton, handleGridElement, tipo_medida }) => {
     const { data, error, isLoading } = useDimensiones();
      const { orientation } = useOrientationStore();
-     console.log(orientation)
 
     if (isLoading) return <p>Cargando dimensiones...</p>;
     if (error) return <p>Error al cargar las dimensiones</p>;
