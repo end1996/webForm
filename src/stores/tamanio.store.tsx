@@ -19,12 +19,12 @@ interface TamanioState {
 
 export const useTamanioStore = create<TamanioState>((set) => ({
   selectedButton: 'estandar',
-  customWidth: '10',
-  customHeight: '15',
+  customWidth: '',
+  customHeight: '',
   widthError: '',
   heightError: '',
   selectedGridButton: '',
-  selectedDimension: '10 X 15',
+  selectedDimension: '',
 
   
   setSelectedButton: (button) => set({ selectedButton: button }),

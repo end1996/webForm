@@ -58,3 +58,12 @@
     left: 10px; /* 🔹 Alinea el mensaje a la izquierda dentro del cuadro */
     bottom: 10px; /* 🔹 Ubica el mensaje dentro del cuadro */
 }
+
+/* Estilos particulares  para pantalla de  1280px o menores */
+@media (max-width: 1280px) {
+
+    .message {
+        font-size: 11px; /* Disminuye el tamaño de la tipografia  del mensaje */
+        bottom: 15px; /* Modifica el espacio en la parte inferior.*/
+    }
+}

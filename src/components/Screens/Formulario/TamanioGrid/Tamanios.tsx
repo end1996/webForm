@@ -1,7 +1,6 @@
 import styles from './Tamanios.module.css';
 import { TamanioGrid } from './TamanioGrid';
 import { useTamanioStore } from '../../../../stores/tamanio.store';
-import { useEffect } from 'react';
 
 
 function Tamanios() {
@@ -66,7 +65,7 @@ function Tamanios() {
         setSelectedDimension(dimensiones);
     };
 
-    // ✅ Actualiza la dimensión cuando se escriben valores personalizados
+    /*// ✅ Actualiza la dimensión cuando se escriben valores personalizados
     useEffect(() => {
         if (selectedButton === "personalizado") {
             setSelectedDimension(`${customWidth} X ${customHeight}`);
@@ -90,7 +89,7 @@ function Tamanios() {
         setSelectedGridButton(newGridButton);
         setSelectedDimension(newDimension);
 
-    }, [selectedButton, customWidth, customHeight]);
+    }, [selectedButton, customWidth, customHeight]);*/
 
 
 

@@ -68,6 +68,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
     useEffect(() => {
         if (imgRef.current) {
             const { naturalWidth, naturalHeight } = imgRef.current;
+            console.log(naturalHeight, naturalHeight)
             const marcoUrl = marcoImages[`marco-${selectedMarco}`];
 
             if (marcoUrl) {
@@ -82,7 +83,6 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ selectedButton, selectedMar
                 setBorderStyle({
                     borderImage: `url(${marcoUrl}) ${borderSize} round`,
                     borderImageSlice: borderSize,
-                    borderImageOutset: 2, // Esto hará que el marco quede por fuera
                 });
             } else {
                 setBorderStyle({});
